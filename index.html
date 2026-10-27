@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大靈書回廊・死神典籍 (BLEACH Archive) | 人物圖鑑・斬魄刀始解卍解・鬼道全集</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            bleach: {
+              black: '#07080c',
+              card: '#0f131c',
+              cardHover: '#151b27',
+              border: '#1f2736',
+              accent: '#8b5cf6',
+              getsuga: '#3b82f6',
+              sakura: '#f472b6',
+              fire: '#f97316',
+              ice: '#38bdf8',
+              hollow: '#ef4444',
+              gold: '#fbbf24',
+              kido: '#06b6d4',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #06070a;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+    .font-serif-tc {
+      font-family: 'Noto Serif TC', serif;
+    }
+    .font-cinzel {
+      font-family: 'Cinzel', serif;
+    }
+    .ambient-glow {
+      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.18), rgba(139, 92, 246, 0.08) 40%, rgba(0, 0, 0, 0) 75%);
+    }
+    .glass-card {
+      background: rgba(15, 19, 28, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(139, 92, 246, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(139, 92, 246, 0.2);
+    }
+    .shikai-quote {
+      position: relative;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%);
+      border-left: 3px solid #8b5cf6;
+    }
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #06070a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f2736;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8b5cf6;
+    }
+  </style>
+</head>
+<body class="selection:bg-purple-700 selection:text-white">
+
+  <!-- Floating Reiatsu Background Canvas -->
+  <canvas id="reiatsuCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+  <!-- Ambient Light Orbs -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] ambient-glow pointer-events-none z-0"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-gray-900/95 border border-purple-500/50 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 backdrop-blur-md">
+      <span class="text-purple-400">⚡</span>
+      <span id="toastMsg" class="text-sm font-medium">已複製</span>
+    </div>
+  </div>
+
+  <!-- Top Sticky Header -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[#07090e]/85 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center space-x-3 shrink-0">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-700 to-indigo-600 flex items-center justify-center shadow-lg shadow-purple-900/40">
+          <span class="font-serif-tc font-black text-white text-base">魂</span>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="font-serif-tc font-black text-lg tracking-wider text-white">大靈書回廊</span>
+            <span class="text-[10px] font-mono tracking-widest px-2 py-0.5 rounded bg-purple-950/80 text-purple-300 border border-purple-500/30">BLEACH ARCHIVE</span>
+          </div>
+          <p class="text-[11px] text-gray-400 hidden sm:block">護廷十三隊・十刃全體・星十字騎士團・斬魄刀・鬼道典籍</p>
+        </div>
+      </a>
+
+      <!-- Quick Nav Links -->
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-300">
+        <a href="#soul-quiz" class="hover:text-amber-400 transition-colors flex items-center space-x-1.5 text-amber-300 font-semibold">
+          <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+          <span>靈魂鑑定測驗</span>
+        </a>
+        <a href="#characters" class="hover:text-purple-400 transition-colors flex items-center space-x-1.5">
+          <i data-lucide="users" class="w-4 h-4 text-purple-400"></i>
+          <span>人物全圖鑑</span>
+        </a>
+        <a href="#zanpakuto" class="hover:text-purple-400 transition-colors flex items-center space-x-1.5">
+          <i data-lucide="sword" class="w-4 h-4 text-blue-400"></i>
+          <span>始解・卍解庫</span>
+        </a>
+        <a href="#kido" class="hover:text-purple-400 transition-colors flex items-center space-x-1.5">
+          <i data-lucide="flame" class="w-4 h-4 text-cyan-400"></i>
+          <span>破道・縛道全集</span>
+        </a>
+      </nav>
+
+      <!-- Global Search Box -->
+      <div class="relative flex-1 max-w-xs">
+        <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+        <input 
+          type="text" 
+          id="globalSearchInput" 
+          oninput="handleGlobalSearch(this.value)"
+          placeholder="搜尋人物 / 刀名 / 始解語 / 鬼道..." 
+          class="w-full bg-[#111622] border border-white/10 rounded-xl pl-9 pr-4 py-1.5 text-xs sm:text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-all"
+        >
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="relative z-10 pt-28 pb-10 text-center max-w-5xl mx-auto px-4">
+    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs mb-4">
+      <span>⛩️ 瀞靈廷四十六室・大靈書回廊正典典藏</span>
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-black text-white font-serif-tc tracking-wider">
+      《死神 BLEACH》大靈書回廊
+    </h1>
+    <p class="mt-3 text-sm sm:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed">
+      收錄死神全陣營人物（含頭像相片與十刃全員）、斬魄刀始解語與卍解全覽、劇中破道縛道古典詠唱文、以及本命斬魄刀與番隊雙重靈魂測驗。
+    </p>
+
+    <!-- Quick Stats Bar -->
+    <div class="mt-8 grid grid-cols-3 max-w-lg mx-auto gap-3 text-center">
+      <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+        <div class="text-xl sm:text-2xl font-black text-purple-400 font-cinzel">35+</div>
+        <div class="text-[11px] text-gray-400 mt-0.5">關鍵人物（含十刃）</div>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+        <div class="text-xl sm:text-2xl font-black text-blue-400 font-cinzel">24+</div>
+        <div class="text-[11px] text-gray-400 mt-0.5">斬魄刀・始解卍解</div>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+        <div class="text-xl sm:text-2xl font-black text-cyan-400 font-cinzel">20+</div>
+        <div class="text-[11px] text-gray-400 mt-0.5">破道・縛道古典詠唱</div>
+      </div>
+    </div>
+
+    <!-- Quiz CTA Button in Hero -->
+    <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a href="#soul-quiz" onclick="switchQuizMode('zanpakuto')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-purple-700 to-indigo-600 hover:from-purple-600 hover:to-indigo-500 shadow-xl shadow-purple-900/30 transition-all flex items-center space-x-2">
+        <i data-lucide="sword" class="w-4 h-4 text-purple-200"></i>
+        <span>🔮 命定斬魄刀測驗 (8題)</span>
+      </a>
+      <a href="#soul-quiz" onclick="switchQuizMode('squad')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 shadow-xl shadow-amber-900/30 transition-all flex items-center space-x-2">
+        <i data-lucide="shield" class="w-4 h-4 text-amber-200"></i>
+        <span>⛩️ 護廷十三隊・入隊鑑定 (5題)</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Content Areas -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-20">
+
+    <!-- ========================================== -->
+    <!-- 0. 雙重靈魂測驗專區 (SOUL QUIZ SECTION) -->
+    <!-- ========================================== -->
+    <section id="soul-quiz" class="scroll-mt-24">
+      <div class="relative rounded-3xl p-[1px] bg-gradient-to-b from-amber-500/30 via-purple-500/20 to-transparent shadow-2xl">
+        <div class="rounded-3xl bg-[#0c101a] border border-white/10 p-6 sm:p-10 relative overflow-hidden">
+          
+          <div class="absolute -right-20 -top-20 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- Quiz Mode Switcher Tabs -->
+          <div class="flex items-center justify-center space-x-2 sm:space-x-3 mb-8 relative z-10">
+            <button onclick="switchQuizMode('zanpakuto')" id="tabBtnZanpakuto" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-purple-600 text-white shadow-lg shadow-purple-900/40 border border-purple-500/50 flex items-center space-x-2 transition-all">
+              <i data-lucide="sword" class="w-4 h-4 text-purple-200"></i>
+              <span>命定斬魄刀測驗 (8題)</span>
+            </button>
+            <button onclick="switchQuizMode('squad')" id="tabBtnSquad" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 text-gray-300 hover:text-white hover:bg-white/10 border border-white/10 flex items-center space-x-2 transition-all">
+              <i data-lucide="shield" class="w-4 h-4 text-amber-400"></i>
+              <span>護廷十三隊・入隊測驗 (5題)</span>
+            </button>
+          </div>
+
+          <!-- Quiz Header -->
+          <div class="text-center max-w-2xl mx-auto mb-8 relative z-10">
+            <div id="quizBadgeContainer" class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs mb-3">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span id="quizBadgeText">真央靈術院・淺打靈魂共鳴儀式</span>
+            </div>
+            <h2 id="quizMainTitle" class="text-2xl sm:text-4xl font-black text-white font-serif-tc tracking-wide">
+              尋找你的命定斬魄刀
+            </h2>
+            <p id="quizMainDesc" class="mt-2 text-xs sm:text-sm text-gray-400 leading-relaxed">
+              斬魄刀乃死神以自身靈魂注入「淺打」鍛造而成之半身。回答 8 道深層心理與處世情境抉擇，測定最契合你靈壓特質的本命斬魄刀與始解解放語！
+            </p>
+          </div>
+
+          <!-- QUIZ CONTAINER -->
+          <div id="quizContainer" class="max-w-2xl mx-auto relative z-10">
+            
+            <div class="mb-6">
+              <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-2">
+                <span id="quizStepText">問題 1 / 8</span>
+                <span id="quizCategoryTag" class="text-purple-400 font-semibold">突發危機篇</span>
+              </div>
+              <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                <div id="quizProgressBar" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full transition-all duration-300" style="width: 12.5%;"></div>
+              </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 border border-white/10 shadow-lg">
+              <h3 id="quizQuestionTitle" class="text-lg sm:text-xl font-bold text-white font-serif-tc leading-snug">
+                載入題目中...
+              </h3>
+
+              <div id="quizOptionsList" class="mt-6 space-y-3">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RESULT CONTAINER -->
+          <div id="quizResultContainer" class="hidden max-w-2xl mx-auto relative z-10">
+            <!-- Dynamically populated -->
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 1. 死神人物全圖鑑（附照片頭像） -->
+    <!-- ========================================== -->
+    <section id="characters" class="scroll-mt-24">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-4 mb-8 gap-4">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+            <span class="text-xs font-mono uppercase tracking-widest text-purple-400">Character Compendium</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-serif-tc mt-1">死神人物全圖鑑（正反派全體）</h2>
+          <p class="text-xs text-gray-400 mt-1">收錄護廷隊長、十刃全體（第0~9刃）、現世組與星十字騎士團，點擊卡片查看詳細生平與戰技。</p>
+        </div>
+
+        <!-- Filter Tags -->
+        <div class="flex items-center space-x-1.5 overflow-x-auto pb-1 text-xs">
+          <button onclick="filterChars('all')" class="char-filter-btn active px-3 py-1.5 rounded-lg bg-purple-600 text-white font-medium transition-all">全部人物</button>
+          <button onclick="filterChars('護廷十三隊')" class="char-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">護廷十三隊</button>
+          <button onclick="filterChars('虛夜宮十刃')" class="char-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">虛夜宮・十刃 (Espada)</button>
+          <button onclick="filterChars('主角現世組')" class="char-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">主角・現世組</button>
+          <button onclick="filterChars('無形帝國')" class="char-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">無形帝國 (Sternritter)</button>
+          <button onclick="filterChars('零番隊')" class="char-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">零番隊</button>
+        </div>
+      </div>
+
+      <!-- Characters Grid -->
+      <div id="charactersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamically rendered -->
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 2. 斬魄刀始解語與卍解專區 -->
+    <!-- ========================================== -->
+    <section id="zanpakuto" class="scroll-mt-24">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-4 mb-8 gap-4">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+            <span class="text-xs font-mono uppercase tracking-widest text-blue-400">Zanpakuto & Bankai</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-serif-tc mt-1">斬魄刀・始解語與卍解全覽</h2>
+        </div>
+
+        <div class="flex items-center space-x-1.5 overflow-x-auto pb-1 text-xs">
+          <button onclick="filterZanpakuto('all')" class="zan-filter-btn active px-3 py-1.5 rounded-lg bg-blue-600 text-white font-medium transition-all">全部</button>
+          <button onclick="filterZanpakuto('隊長級')" class="zan-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">護廷隊長</button>
+          <button onclick="filterZanpakuto('主角群')" class="zan-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">主角群</button>
+          <button onclick="filterZanpakuto('特殊系')" class="zan-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">特殊・零番隊</button>
+        </div>
+      </div>
+
+      <div id="zanpakutoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamically rendered -->
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. 鬼道與縛道全集專區 -->
+    <!-- ========================================== -->
+    <section id="kido" class="scroll-mt-24">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-4 mb-8 gap-4">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+            <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">Kido & Bakudo Compendium</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-serif-tc mt-1">劇中鬼道・縛道全集（附完整詠唱文）</h2>
+          <p class="text-xs text-gray-400 mt-1">點擊卡片右上角按鈕即可直接複製完整古代詠唱文。</p>
+        </div>
+
+        <div class="flex items-center space-x-1.5 overflow-x-auto pb-1 text-xs">
+          <button onclick="filterKido('all')" class="kido-filter-btn active px-3 py-1.5 rounded-lg bg-cyan-600 text-white font-medium transition-all">全部鬼道</button>
+          <button onclick="filterKido('破道')" class="kido-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">破道 (Hadou 攻擊)</button>
+          <button onclick="filterKido('縛道')" class="kido-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">縛道 (Bakudo 封鎖)</button>
+          <button onclick="filterKido('高階禁術')" class="kido-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all">高階・九十號以上</button>
+        </div>
+      </div>
+
+      <div id="kidoGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Dynamically rendered -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Character / Detail Modal -->
+  <div id="detailModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-[#0f1420] border border-white/15 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+      <button onclick="closeModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-gray-300 hover:text-white transition-all">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div id="modalContent">
+        <!-- Dynamically loaded -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-[#050608] py-12 text-sm text-gray-500 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+        <span class="text-gray-300 font-serif-tc font-bold">大靈書回廊・死神典籍 (BLEACH Archive)</span>
+      </div>
+      <div class="text-xs text-gray-500 text-center md:text-right">
+        資料整理自久保帶人《BLEACH 死神》漫畫與動畫正篇設定。<br>
+        純靜態 HTML/CSS/JS 構建，支援本機雙擊直接瀏覽或 GitHub Pages 託管。
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. DATA: 斬魄刀資料庫 (始解解放語 + 卍解)
+    // -------------------------------------------------------------
+    const zanpakutoData = [
+      {
+        id: 'zangetsu',
+        name: '斬月 (Zangetsu)',
+        user: '黑崎一護',
+        category: '主角群',
+        faction: '現世代理死神',
+        attribute: '近戰・極限靈壓凝聚系',
+        shikaiCmd: '常時解放型（無特定口號）',
+        shikaiDesc: '宛如大型菜刀般的無鐔巨刃，靈力常時滿溢。奧義「月牙天衝」將高密度靈壓凝聚於刀刃前端一口氣釋放。',
+        bankaiName: '天鎖斬月 (Tensa Zangetsu)',
+        bankaiDesc: '超小型黑刀。將原本龐大驚人的靈壓全數極度壓縮於細薄刀刃與全身，獲得極致的超高速移動與爆發力。終極境界可施展「最後的月牙天衝・無月」。',
+        iconColor: 'from-blue-600 to-indigo-900',
+        badge: '主角'
+      },
+      {
+        id: 'ryujin',
+        name: '流刃若火 (Ryujin Jakka)',
+        user: '山本元柳齋重國',
+        category: '隊長級',
+        faction: '護廷十三隊 一番隊總隊長',
+        attribute: '炎熱系最強・最古老之刃',
+        shikaiCmd: '萬象一切，皆為灰燼，流刃若火！',
+        shikaiDesc: '拔刀即散發數千度高溫灼熱火焰，將周遭大氣水分完全蒸發，僅揮刀之氣便能燃盡大地。',
+        bankaiName: '殘火太刀 (Zanka no Tachi) —— 四大極限型態',
+        bankaiDesc: '將流刃若火全部火焰徹底封鎖凝縮於單一刀尖，焦黑如炭，蘊含太陽核心一千五百萬度極致高溫。分為完整四大絕技：\n【東・旭日刃】：將高溫封於刀刃邊緣，無火無煙，碰觸之物悉數自世間蒸發抹消，不留半點痕跡。\n【西・殘日獄衣】：將自身靈壓化為一千五百萬度太陽烈焰披覆於全身，形成不可直視亦不可觸碰之日冕防壁，任何妄圖靠近之人瞬間自燃灰飛煙滅。\n【南・火合十萬億死大葬陣】：將焦黑刀尖刺入大地，喚醒過去千年來喪命於流刃若火刀下之十萬億焦黑死者骷髏大軍，作為亡靈復仇軍團圍攻敵手身心。\n【北・天地灰燼】：凝聚極限烈焰的一斬，刀光一閃，遠方天際與目標瞬間被超高溫灼斬為焦土虛無。',
+        iconColor: 'from-amber-600 to-red-950',
+        badge: '一番隊'
+      },
+      {
+        id: 'senbon',
+        name: '千本櫻 (Senbonzakura)',
+        user: '朽木白哉',
+        category: '隊長級',
+        faction: '護廷十三隊 六番隊隊長',
+        attribute: '物理斬擊・風華群刃系',
+        shikaiCmd: '散落吧，千本櫻！',
+        shikaiDesc: '刀身在月光與日光照耀下分解為數千片細小的刀刃碎片，宛如在風中飛舞的粉櫻，肉眼幾難看清，能從所有死角撕裂敵人。',
+        bankaiName: '千本櫻景嚴 (Senbonzakura Kageyoshi)',
+        bankaiDesc: '白哉將刀筆直垂直沉入地面，從地面兩側升起千柄巨大刀刃並瞬間粉碎為上億片刀刃洪流。具備多重型態：【殲景】將散落刀片重新聚合為圓形鬥技場；【吭景】以億萬刀刃球體全方位球形絞殺；【終景・白帝劍】將全部靈壓集中於身化作純白羽翼巨劍，行一擊必殺。',
+        iconColor: 'from-pink-500 to-rose-950',
+        badge: '六番隊'
+      },
+      {
+        id: 'hyorinmaru',
+        name: '冰輪丸 (Hyorinmaru)',
+        user: '日番谷冬獅郎',
+        category: '隊長級',
+        faction: '護廷十三隊 十番隊隊長',
+        attribute: '冰雪系最強斬魄刀',
+        shikaiCmd: '端坐於霜天吧，冰輪丸！',
+        shikaiDesc: '釋放充斥大氣中水分的冰之巨龍，尾端連著鐵鍊與弦月形刀刃。溢出的靈壓能凍結大氣中的水分化為冰霜。',
+        bankaiName: '大紅蓮冰輪丸 (Daiguren Hyorinmaru)',
+        bankaiDesc: '冬獅郎身後凝聚十二片冰之蓮花花瓣與巨型冰之羽翼。在花瓣完全凋零後揭示「成熟完全姿態」：身形轉變為成年，一瞬間凍結所有物質與機能，施展「四界冰結」在四步之內將地水火風一切凍結無效化。',
+        iconColor: 'from-cyan-500 to-blue-950',
+        badge: '十番隊'
+      },
+      {
+        id: 'kyokasuigetsu',
+        name: '鏡花水月 (Kyoka Suigetsu)',
+        user: '藍染惣右介',
+        category: '隊長級',
+        faction: '前五番隊隊長 / 虛夜宮之主',
+        attribute: '催眠系最強・完全催眠',
+        shikaiCmd: '碎裂吧，鏡花水月！',
+        shikaiDesc: '只要看過一次始解瞬間的對象，五感（視覺、聽覺、嗅覺、味覺、觸覺）將終生受藍染隨意支配。能將敵人的外貌、靈壓、姿態偽裝給任何人，令護廷十三隊自相殘殺。',
+        bankaiName: '未知（未於原作直接揭示）',
+        bankaiDesc: '即使無需施展卍解，藍染憑藉始解「完全催眠」與崩玉融合形態，就已具備超越死神與虛境界之絕對神力，甚至成功干擾全知全能的猶哈巴赫對未來的視線。',
+        iconColor: 'from-purple-600 to-indigo-950',
+        badge: '五番隊'
+      },
+      {
+        id: 'sode',
+        name: '袖白雪 (Sode no Shirayuki)',
+        user: '朽木露琪亞',
+        category: '主角群',
+        faction: '護廷十三隊 十三番隊隊長',
+        attribute: '屍魂界最美麗的純白冰雪刀',
+        shikaiCmd: '凌舞吧，袖白雪！',
+        shikaiDesc: '刀身、刀格與緞帶皆為純白。以自身肉體降溫至絕對零度作為攻擊：【初舞・月白】在地面繪出光環引發沖天冰柱；【次舞・白漣】射出四道極寒暴風雪；【參舞・白刃】刀刃斷裂時以冰霜重塑刀身刺穿敵人。',
+        bankaiName: '白霞罰 (Hakka no Togame)',
+        bankaiDesc: '露琪亞全身換上雪白羽衣，天地間溫度瞬間降至絕對零度（-273.15℃），所有被白光觸及之物體瞬間失去分子運動而脆化粉碎。',
+        iconColor: 'from-sky-300 to-indigo-950',
+        badge: '十三番隊'
+      },
+      {
+        id: 'katen',
+        name: '花天狂骨 (Katen Kyokotsu)',
+        user: '京樂春水',
+        category: '隊長級',
+        faction: '護廷十三隊 八番隊 ➔ 新總隊長',
+        attribute: '雙刀・兒童遊戲規則具象化',
+        shikaiCmd: '花風紊亂，花神啼鳴；天風紊亂，天魔嗤笑。花天狂骨！',
+        shikaiDesc: '屍魂界成對雙刀之一。將童年遊戲規則化為生死現實：【嶄鬼】站得高者勝；【影鬼】踏中影子者傷；【色鬼】呼喊顏色，砍中該顏色者受極大傷害。',
+        bankaiName: '花天狂骨・黑松心中 (Karamatsu Shinju)',
+        bankaiDesc: '發動時天空晦暗，周遭陷入極致抑鬱絕望。分為四幕戲曲：【一段目・躊躇傷分合】、 【二段目・慚愧之褥】、 【三段目・斷魚之淵】、 【終段・糸切鋏血染喉】拉斷斬首！',
+        iconColor: 'from-pink-700 to-gray-950',
+        badge: '總隊長'
+      },
+      {
+        id: 'kamishini',
+        name: '神鎗 (Shinso)',
+        user: '市丸銀',
+        category: '隊長級',
+        faction: '護廷十三隊 前三番隊隊長',
+        attribute: '音速急速伸縮・劇毒溶解毒素',
+        shikaiCmd: '射殺他，神鎗！',
+        shikaiDesc: '短如脅差的刀刃能以極快速度伸長百倍，刺穿遠處敵人的心臟。',
+        bankaiName: '神殺鎗 (Kamishini no Yari)',
+        bankaiDesc: '號稱能以音速500倍伸長至13公里。伸縮瞬間刀刃有一小塊碎片會化為粉塵留在敵人體內，伴隨「死吧，神殺鎗」口號，致命細胞級劇毒會瞬間溶解並崩解目標體內器官。',
+        iconColor: 'from-slate-400 to-cyan-950',
+        badge: '三番隊'
+      },
+      {
+        id: 'benihime',
+        name: '紅姬 (Benihime)',
+        user: '浦原喜助',
+        category: '特殊系',
+        faction: '前十二番隊隊長 / 浦原商店老闆',
+        attribute: '血霞之盾・空間重構變換系',
+        shikaiCmd: '醒來吧，紅姬！ / 啼鳴吧，紅姬！',
+        shikaiDesc: '釋放深紅色血霞能量波，擁有【啼鳴吧】赤紅射線、【切裂吧】鋸齒刀刃、【縛道之血霞之盾】格擋攻擊等多重招式。',
+        bankaiName: '觀音開紅姬改 (Kannonbiraki Benihime Aratame)',
+        bankaiDesc: '背後浮現巨大無比的盲眼觀音人偶。將雙手所觸碰的任何領域與物體進行剖開並重新縫合改造，兼具醫療再生與毀滅破壞。',
+        iconColor: 'from-red-500 to-purple-950',
+        badge: '技術開發局初代'
+      },
+      {
+        id: 'suzumebachi',
+        name: '雀蜂 (Suzumebachi)',
+        user: '碎蜂',
+        category: '隊長級',
+        faction: '護廷十三隊 二番隊隊長兼隱密機動總司令',
+        attribute: '二擊必殺・暗殺毒針 ➔ 巨型砲彈',
+        shikaiCmd: '盡敵螫殺，雀蜂！',
+        shikaiDesc: '右手中指戴上金色指甲套與蜂針，同一位置遭受兩次刺擊者，會浮現黑色蝴蝶圖案「蜂紋華」並直接致死（二擊必殺）。',
+        bankaiName: '雀蜂雷公鞭 (Jakaku Raikoben)',
+        bankaiDesc: '右臂覆蓋巨大無比的金色導彈發射鎧甲。一擊即可摧毀半座城鎮，因威力過於巨大且違背暗殺隱蔽原則，碎蜂極少主動使用。',
+        iconColor: 'from-yellow-500 to-amber-950',
+        badge: '二番隊'
+      },
+      {
+        id: 'ashisogi',
+        name: '疋殺地藏 (Ashisogi Jizo)',
+        user: '涅繭利',
+        category: '隊長級',
+        faction: '護廷十三隊 十二番隊隊長兼技術開發局長',
+        attribute: '神經毒素・生物生化改造機關',
+        shikaiCmd: '張開吧，疋殺地藏！',
+        shikaiDesc: '化為長著嬰兒面孔的三叉戟。刺中目標後釋放神經麻痺毒素，切斷大腦向四肢傳遞的運動訊號，但保留痛覺。',
+        bankaiName: '金色疋殺地藏 (Konjiki Ashisogi Jizo) ➔ 魔胎伏印症體',
+        bankaiDesc: '具備巨嬰身軀與毛蟲下半身的怪物，噴吐致命毒氣。千年血戰中改造為「魔胎伏印症體」，可根據戰況產下具備針對性抗體的新生巨嬰。',
+        iconColor: 'from-yellow-600 to-purple-950',
+        badge: '十二番隊'
+      },
+      {
+        id: 'nozarashi',
+        name: '野干 (Nozarashi)',
+        user: '更木劍八',
+        category: '隊長級',
+        faction: '護廷十三隊 十一番隊隊長',
+        attribute: '極限物理斬切・吞噬一切之巨刃',
+        shikaiCmd: '吞噬吧，野干！',
+        shikaiDesc: '長柄巨型剁骨巨斧，擁有連宇宙空間、巨大隕石都能一刀兩斷的絕對破壞力。',
+        bankaiName: '無名鬼神卍解 (Unnamed Berserker Bankai)',
+        bankaiDesc: '皮膚化為鮮紅修羅惡鬼姿態，頭頂長犄角，喪失理性化為純粹戰鬥修羅，揮刀靈壓甚至一度令劍八自身肉體承受不住崩裂。',
+        iconColor: 'from-red-700 to-neutral-950',
+        badge: '十一番隊'
+      }
+    ];
+
+    // -------------------------------------------------------------
+    // 2. DATA: 鬼道與縛道全集 (附完整古代詠唱文)
+    // -------------------------------------------------------------
+    const kidoData = [
+      {
+        num: '破道之一',
+        name: '衝 (Sho)',
+        type: '破道',
+        tier: '初階',
+        incantation: '無特定完整詠唱文（捨棄詠唱施展）',
+        desc: '由食指指尖發射微小但衝力強大的靈壓氣流，將近距離目標擊飛擊退。',
+        user: '朽木白哉、雛森桃'
+      },
+      {
+        num: '破道之四',
+        name: '白雷 (Byakurai)',
+        type: '破道',
+        tier: '初階',
+        incantation: '無特定完整詠唱文',
+        desc: '將靈壓高度集中於指尖，如同雷電般筆直射出蒼白的光芒，具備強大穿透力。',
+        user: '朽木白哉、朽木露琪亞'
+      },
+      {
+        num: '破道之三十一',
+        name: '赤火砲 (Shakkaho)',
+        type: '破道',
+        tier: '中階',
+        incantation: '「散落吧，紅蓮之火；向四方擴散，焚毀世間一切！——破道之三十一・赤火砲！」',
+        desc: '最常用的炎熱攻擊鬼道之一。從手掌聚集緋紅色火球朝敵人轟擊，產生範圍爆破。',
+        user: '阿散井戀次、雛森桃、朽木露琪亞'
+      },
+      {
+        num: '破道之三十三',
+        name: '蒼火墜 (Sokatsui)',
+        type: '破道',
+        tier: '中階',
+        incantation: '「君臨者啊！血肉的面具、萬象、翼展、冠以人之名者！真理與節制、僅以不知罪之爪在純潔的牆壁上刻下罪痕！——破道之三十三・蒼火墜！」',
+        desc: '產生大範圍蒼藍色爆炎浪潮向前轟襲，威力與破壞半徑均高於赤火砲。',
+        user: '朽木白哉、朽木露琪亞'
+      },
+      {
+        num: '破道之六十三',
+        name: '雷吼砲 (Raikaho)',
+        type: '破道',
+        tier: '高階',
+        incantation: '「星羅棋布的獸之骨，爪牙・紅晶・結成之輪，風動則聚，風止則雨，以音之音，充盈此陣！——破道之六十三・雷吼砲！」',
+        desc: '在掌心聚集大量金色雷光電漿，化為巨大的雷霆衝擊波向前方怒吼轟擊。',
+        user: '志波空鶴、浦原喜助、藍染惣右介'
+      },
+      {
+        num: '破道之七十三',
+        name: '雙蓮蒼火墜 (Soren Sokatsui)',
+        type: '破道',
+        tier: '高階',
+        incantation: '「君臨者啊！血肉的面具、萬象、翼展、冠以人之名者！在常理與宿命中，以雙爪雕刻純白之印！——破道之七十三・雙蓮蒼火墜！」',
+        desc: '雙手同時聚集極限靈壓，發射出雙重疊加的蒼炎風暴，威力數倍於單發蒼火墜。',
+        user: '朽木白哉'
+      },
+      {
+        num: '破道之九十',
+        name: '黑棺 (Kurohitsugi)',
+        type: '破道',
+        tier: '高階禁術',
+        incantation: '「隱隱透出渾濁的紋章，桀驁不馴張狂的才能；潮湧・否定・麻痺・一瞬，阻礙長眠。爬行的鋼鐵公主，相繼自殘的泥偶；結合吧・反彈吧・延伸至地面，知曉自身的無力吧！——破道之九十・黑棺！」',
+        desc: '召喚由數十道黑色重力光幕構成的巨大黑色長方體巨棺封入敵人，內部無數道黑色影刃將敵人切碎，完全詠唱時甚至扭曲時空重力。',
+        user: '藍染惣右介'
+      },
+      {
+        num: '破道之九十六',
+        name: '一刀火葬 (Itto Kaso)',
+        type: '破道',
+        tier: '高階禁術',
+        incantation: '「以焦熱之身軀為代價，燃盡一切罪業——犧牲破道之九十六・一刀火葬！」',
+        desc: '必須以自身燒焦的身軀為觸媒才能發動之禁術級破道。拔地升起巨大如刀刃形狀的沖天赤炎。',
+        user: '山本元柳齋重國'
+      },
+      {
+        num: '縛道之六十一',
+        name: '六杖光牢 (Rikujokoro)',
+        type: '縛道',
+        tier: '高階',
+        incantation: '「雷鳴之馬車、紡車之縫隙、此物有光群集並一分為六！——縛道之六十一・六杖光牢！」',
+        desc: '自虛空中浮現六道寬大無比的光之薄片，瞬間合攏釘死敵人的腰腹與四肢。',
+        user: '朽木白哉'
+      },
+      {
+        num: '縛道之七十七',
+        name: '天挺空羅 (Tenteikura)',
+        type: '縛道',
+        tier: '高階',
+        incantation: '「黑白之羅！二十二之橋樑，六十六之冠帶，足跡・遠雷・尖峰・迴地・夜伏・雲海・蒼藍之隊列，充滿圓形之刻，直通太虛！——縛道之七十七・天挺空羅！」',
+        desc: '在空中繪製網狀靈子矩陣，直接與複數死神的意識進行超遠距離廣播連線通信。',
+        user: '虎徹勇音、東仙要'
+      },
+      {
+        num: '縛道之八十一',
+        name: '斷空 (Danku)',
+        type: '縛道',
+        tier: '高階禁術',
+        incantation: '「完全隔絕八十九號以下破道之無形防壁——縛道之八十一・斷空！」',
+        desc: '召喚一面透明如鏡面的巨大正方形靈子光牆，能徹底無效化八十九號以下的一切破道與攻擊性靈力。',
+        user: '朽木白哉、藍染惣右介'
+      }
+    ];
+
+    // -------------------------------------------------------------
+    // 3. DATA: 死神人物全圖鑑（正反派全員・附相片頭像）
+    // -------------------------------------------------------------
+    const charactersData = [
+      // 主角與現世組
+      {
+        name: '黑崎一護 (Kurosaki Ichigo)',
+        nameJp: 'Kurosaki Ichigo',
+        faction: '主角現世組',
+        role: '死神代理 / 死神・滅卻師・虛三位一體',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/3/284121.jpg',
+        kanji: '護',
+        avatarGradient: 'from-blue-600 to-indigo-900',
+        weapon: '斬月 ➔ 真・天鎖斬月（雙刀流完全解放）',
+        ability: '月牙天衝、月牙十字衝、完全虛化牛頭姿態、最後的月牙天衝「無月」',
+        desc: '空座町高中生兼代理死神。多次在瀞靈廷危難、破面篇與千年血戰篇拯救三界於水火之中，其靈魂堅韌無比。',
+        quote: '「如果奇蹟只發生一次，那麼第二次發生的又該稱作什麼？」',
+        badgeColor: 'bg-blue-900/60 text-blue-300 border-blue-500/40'
+      },
+      {
+        name: '朽木露琪亞 (Kuchiki Rukia)',
+        nameJp: 'Kuchiki Rukia',
+        faction: '主角現世組',
+        role: '十三番隊隊長 / 一護命運的締結者',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/11/484559.jpg',
+        kanji: '露',
+        avatarGradient: 'from-sky-500 to-indigo-900',
+        weapon: '袖白雪 ➔ 白霞罰 (Hakka no Togame)',
+        ability: '始解「凌舞吧，袖白雪」（初舞月白、次舞白漣、參舞白刃）；卍解「白霞罰」（絕對零度凍結萬象）',
+        desc: '給予黑崎一護死神力量的關鍵少女。在經歷虛圈死鬥與靈王宮修煉後領悟斬魄刀真意，成功施展極寒卍解。',
+        quote: '「人們之所以懷抱希望，是因為他們看不見死亡的形體。」',
+        badgeColor: 'bg-sky-950 text-sky-300 border-sky-500/40'
+      },
+      {
+        name: '阿散井戀次 (Abarai Renji)',
+        nameJp: 'Abarai Renji',
+        faction: '主角現世組',
+        role: '六番隊副隊長 / 一護的生死摯友',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/4/284125.jpg',
+        kanji: '戀',
+        avatarGradient: 'from-amber-600 to-red-950',
+        weapon: '蛇尾丸 ➔ 雙王蛇尾丸 (Soo Zabimaru)',
+        ability: '始解「咆哮吧，蛇尾丸」；完全體卍解「雙王蛇尾丸」（蛇牙鐵炮、狒狒王臂甲重力撕扯）',
+        desc: '出身流魂街第七十八區戌弔，憑藉頑強毅力一路晉升至席官與副隊長。經零番隊淬火重塑，展現雙王合一真髓。',
+        quote: '「我已經對天發過誓了，總有一天要追上你的背影！」',
+        badgeColor: 'bg-amber-950 text-amber-300 border-amber-500/40'
+      },
+      {
+        name: '石田雨龍 (Ishida Uryu)',
+        nameJp: 'Ishida Uryu',
+        faction: '主角現世組',
+        role: '最後的純血純種滅卻師 / 星十字騎士團繼承人',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/12/367332.jpg',
+        kanji: '雨',
+        avatarGradient: 'from-blue-600 to-indigo-900',
+        weapon: '銀嶺弧雀 ➔ 聖文字「A - 完全反立 (The Antithesis)」',
+        ability: '光之雨 (Licht Regen)；滅卻師完聖體；完全反立（將兩點之間已經發生的傷害與狀態直接逆轉互換）',
+        desc: '頭腦冷靜的天才高中生滅卻師。千年血戰中忍辱負重打入無形帝國內部臥底，最終以銀之血栓箭射穿猶哈巴赫。',
+        quote: '「我以滅卻師的榮譽向你保證，我的箭矢絕不會偏離正道。」',
+        badgeColor: 'bg-blue-950 text-blue-300 border-blue-500/40'
+      },
+      {
+        name: '井上織姬 (Inoue Orihime)',
+        nameJp: 'Inoue Orihime',
+        faction: '主角現世組',
+        role: '黑崎一護的命定伴侶 / 侵犯神之領域的奇蹟少女',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/14/316654.jpg',
+        kanji: '織',
+        avatarGradient: 'from-amber-500 to-rose-700',
+        weapon: '完現術：盾舜六花 (Shun Shun Rikka)',
+        ability: '三天結盾（萬象拒絕之光之金字塔防禦）；雙天歸盾（事象之拒絕・跨越時間與因果將受創之物完全回溯還原至原狀）；孤天斬盾（點殺拒絕）',
+        desc: '性格純潔善良、溫柔堅強。其能力「事象的拒絕」被藍染譽為足以踏入神之領域的至高奇蹟，在多次慘烈決戰中默默守護一護與夥伴生命線。',
+        quote: '「如果能轉生五次的話，五次都要在同一個地方出生，五次都要喜歡上同一個人。」',
+        badgeColor: 'bg-amber-950 text-amber-300 border-amber-500/40'
+      },
+      {
+        name: '茶渡泰虎 (Yasutora Sado / Chad)',
+        nameJp: 'Yasutora Sado',
+        faction: '主角現世組',
+        role: '一護最信賴的生死摯友 / 鋼鐵之拳完現術者',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/13/44421.jpg',
+        kanji: '泰',
+        avatarGradient: 'from-orange-700 to-stone-900',
+        weapon: '巨人的右臂 (Brazo Derecho de Gigante) ➔ 惡魔的左臂 (Brazo Izquierdo del Diablo)',
+        ability: '右臂防禦重鎧「巨人的右臂」；左臂進攻長矛「惡魔的左臂」；必殺奧義「魔人的一擊 (La Muerte)」在身後烙印巨大骷髏印記重擊',
+        desc: '身形魁梧、沉默寡言的印地安血統混血兒。受祖父教誨「拳頭絕不為私慾傷人」，與一護立下「為彼此揮拳」之誓約，在戰場上始終是夥伴最可靠之肉盾。',
+        quote: '「只要是為了保護一護，我隨時都有粉身碎骨的覺悟。」',
+        badgeColor: 'bg-stone-800 text-stone-300 border-stone-500/40'
+      },
+      // 護廷十三隊名宿
+      {
+        name: '浦原喜助 (Urahara Kisuke)',
+        nameJp: 'Urahara Kisuke',
+        faction: '護廷十三隊',
+        role: '前十二番隊隊長兼技術開發局初代局長 / 浦原商店老闆',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/7/494665.jpg',
+        kanji: '喜',
+        avatarGradient: 'from-emerald-600 to-teal-950',
+        weapon: '紅姬 (Benihime) ➔ 觀音開紅姬改',
+        ability: '始解「醒來吧/啼鳴吧，紅姬」（血霞之盾、切裂）；卍解「觀音開紅姬改」（雙手觸碰範圍內領域與物體徹底剖開再縫合重構）',
+        desc: '智謀通天、創造出崩玉的傳奇死神。外表看似輕浮邋遢，實則是黑崎一護最重要的引路人，與涅繭利在血戰中為護廷立下無可替代之功。',
+        quote: '「為了追求未知而做好失去一切的覺悟，這才是我輩的生存方式。」',
+        badgeColor: 'bg-emerald-950 text-emerald-300 border-emerald-500/40'
+      },
+      {
+        name: '四楓院夜一 (Shihoin Yoruichi)',
+        nameJp: 'Shihoin Yoruichi',
+        faction: '護廷十三隊',
+        role: '前二番隊隊長兼隱密機動總司令 / 「瞬神」夜一',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/16/475990.jpg',
+        kanji: '夜',
+        avatarGradient: 'from-purple-700 to-indigo-950',
+        weapon: '肉搏白打極致 / 瞬神步伐 / 黑貓化身',
+        ability: '瞬神步法、反鬼相殺、白打與鬼道融合奧義「瞬閧」；雷神戰形・「瞬閧・雷獸戰形・灊雷白貓之戰姬」',
+        desc: '四大貴族四楓院家第二十二代當家。性格豪邁大氣、熱愛捉弄他人，擁有冠絕屍魂界的超神速瞬步與雷霆體術。',
+        quote: '「看好了碎蜂，這才是真正的『瞬閧』！」',
+        badgeColor: 'bg-purple-950 text-purple-300 border-purple-500/40'
+      },
+      {
+        name: '山本元柳齋重國',
+        nameJp: 'Yamamoto Genryusai',
+        faction: '護廷十三隊',
+        role: '一番隊隊長兼護廷十三隊總隊長',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/13/284131.jpg',
+        kanji: '山',
+        avatarGradient: 'from-amber-600 to-red-950',
+        weapon: '流刃若火 ➔ 殘火太刀 (Zanka no Tachi)',
+        ability: '始解「萬象一切，皆為灰燼」；卍解具備完整四大極致境界：【東・旭日刃】將極限高溫封於刀尖，碰觸之物悉數自世間抹消蒸發；【西・殘日獄衣】披覆一千五百萬度太陽烈焰日冕防壁；【南・火合十萬億死大葬陣】喚醒十萬億焦黑死者骷髏大軍復仇；【北・天地灰燼】凝聚極限烈焰的一斬燃盡萬象焦土。',
+        desc: '統御護廷十三隊千餘年之無上威嚴領袖，屍魂界歷史最強死神之一。性格剛毅果斷，信奉絕對的正義與秩序，是整座瀞靈廷最堅實的定海神針。',
+        quote: '「吾等之所以立於此處，乃因千年來未曾有比吾更強之死神誕生。」',
+        badgeColor: 'bg-amber-900/60 text-amber-300 border-amber-500/40'
+      },
+      {
+        name: '朽木白哉 (Kuchiki Byakuya)',
+        nameJp: 'Kuchiki Byakuya',
+        faction: '護廷十三隊',
+        role: '六番隊隊長 / 四大貴族朽木家當家',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/15/484558.jpg',
+        kanji: '白',
+        avatarGradient: 'from-pink-600 to-purple-950',
+        weapon: '千本櫻 ➔ 千本櫻景嚴 (Senbonzakura Kageyoshi)',
+        ability: '始解「散落吧，千本櫻」；卍解「千本櫻景嚴」（殲景、吭景、終景・白帝劍）；極致瞬步「空蟬」',
+        desc: '嚴格恪守瀞靈廷法規與名門典範，深沉守護義妹露琪亞。劍術、白打、瞬步與高階鬼道皆達十三隊最頂尖造詣。',
+        quote: '「兄長之劍，不會為了守護規矩而揮動，只為了守護你的尊嚴。」',
+        badgeColor: 'bg-pink-900/60 text-pink-300 border-pink-500/40'
+      },
+      {
+        name: '日番谷冬獅郎 (Hitsugaya Toshiro)',
+        nameJp: 'Hitsugaya Toshiro',
+        faction: '護廷十三隊',
+        role: '十番隊隊長 / 屍魂界百年不遇之天才少年',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/11/276413.jpg',
+        kanji: '獅',
+        avatarGradient: 'from-cyan-500 to-blue-950',
+        weapon: '冰輪丸 ➔ 大紅蓮冰輪丸（成熟完全姿態）',
+        ability: '始解「端坐於霜天吧，冰輪丸」；完全體大紅蓮冰輪丸；終極奧義「四界冰結」（四步之內將地水火風一切凍結無效化）',
+        desc: '最年輕晉升隊長的天才死神，背負極高天賦。在冰之蓮花凋零後覺醒真正完全體姿態，能瞬間將元素與概念徹底冰結。',
+        quote: '「霜天之龍啊，降臨吧！我絕不允許任何同伴倒在我的冰雪之外。」',
+        badgeColor: 'bg-sky-900/60 text-sky-300 border-sky-500/40'
+      },
+      {
+        name: '更木劍八 (Zaraki Kenpachi)',
+        nameJp: 'Zaraki Kenpachi',
+        faction: '護廷十三隊',
+        role: '十一番隊隊長 / 第十一代劍八',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/5/285523.jpg',
+        kanji: '劍',
+        avatarGradient: 'from-red-600 to-neutral-950',
+        weapon: '野干 (Nozarashi) ➔ 無名鬼神修羅姿態',
+        ability: '始解「吞噬吧，野干」（開天闢地巨斧一擊劈碎巨型隕石）；無名鬼神卍解（肉體崩裂之極限凶煞靈壓）',
+        desc: '狂熱追求廝殺樂趣的戰鬥修羅。在斬殺初代劍八卯之花烈後，終於聽見了手中斬魄刀「野干」的真正呼喚。',
+        quote: '「廝殺需要理由嗎？揮刀斬碎面前阻礙的一切，這就是我的全部！」',
+        badgeColor: 'bg-red-950 text-red-300 border-red-500/40'
+      },
+      // 虛夜宮十刃
+      {
+        name: '葛力姆喬・賈卡傑克 (Grimmjow)',
+        nameJp: 'Grimmjow Jaegerjaquez',
+        faction: '虛夜宮十刃',
+        role: '十刃第 6 刃 (Sexta Espada) / 破壞之象徵',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/9/131343.jpg',
+        kanji: '豹',
+        avatarGradient: 'from-cyan-500 to-blue-900',
+        weapon: '歸刃：豹王 (Pantera)',
+        ability: '歸刃語「吱嘎作響吧，豹王！」；豹王之爪 (Desgarrón 發射數丈長靈子巨爪)；王虛之閃 (Gran Rey Cero)',
+        desc: '狂傲不羈的藍髮獵豹狂戰士。不服從任何權威，視黑崎一護為唯一的宿命獵物，在千年血戰中與死神並肩作戰。',
+        quote: '「不管是死神還是破面，擋在我面前的所有獵物，我都一個不剩撕碎！」',
+        badgeColor: 'bg-cyan-900/60 text-cyan-300 border-cyan-500/40'
+      },
+      {
+        name: '烏魯基歐拉・西法 (Ulquiorra Cifer)',
+        nameJp: 'Ulquiorra Cifer',
+        faction: '虛夜宮十刃',
+        role: '十刃第 4 刃 (Cuarta Espada) / 虛無之象徵',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/8/70087.jpg',
+        kanji: '翼',
+        avatarGradient: 'from-emerald-600 to-slate-900',
+        weapon: '歸刃：黑翼大魔 (Murciélago) ➔ 二段歸刃',
+        ability: '歸刃語「封鎖吧，黑翼大魔！」；二段歸刃 (Resurrección Segunda Etapa)；黑虛閃 (Cero Oscuras)；雷霆之槍 (Lanza del Relámpago)',
+        desc: '信奉絕對虛無主義的冷酷破面。是唯一一位掌握十刃中「二段歸刃」的存在，在虛夜宮穹頂與牛頭一護進行宿命死鬥，最終在消散之際理解了「心」的意義。',
+        quote: '「心是什麼？如果把你們的胸膛剖開，我就能在裡面看到它嗎？」',
+        badgeColor: 'bg-emerald-900/60 text-emerald-300 border-emerald-500/40'
+      },
+      {
+        name: '藍染惣右介 (Aizen Sosuke)',
+        nameJp: 'Aizen Sosuke',
+        faction: '虛夜宮十刃',
+        role: '前五番隊隊長 / 虛夜宮統治者 / 至高反派',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/4/51523.jpg',
+        kanji: '藍',
+        avatarGradient: 'from-purple-600 to-indigo-950',
+        weapon: '鏡花水月 (Kyoka Suigetsu) + 崩玉完全融合',
+        ability: '始解「碎裂吧，鏡花水月」（完全催眠五感支配）；崩玉融合進化；破道之九十黑棺、破道之九十九五龍轉滅',
+        desc: '策劃破面軍團並突破死神極限登臨神位之梟雄。言談優雅冷靜、智謀深不可測，甚至干擾了全知全能的猶哈巴赫。',
+        quote: '「憧憬是距離理解最遙遠的感情。從一開始，天上就沒有任何人立足。」',
+        badgeColor: 'bg-purple-900/60 text-purple-300 border-purple-500/40'
+      },
+      {
+        name: '柯雅泰・史塔克 (Coyote Starrk)',
+        nameJp: 'Coyote Starrk',
+        faction: '虛夜宮十刃',
+        role: '十刃第 1 刃 (Primera Espada) / 孤獨之象徵',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/12/82121.jpg',
+        kanji: '狼',
+        avatarGradient: 'from-red-600 to-slate-900',
+        weapon: '歸刃：群狼 (Los Lobos)',
+        ability: '歸刃語「追殺他，群狼！」；無限裝填雙槍虛閃（Cero Metralleta）；自身靈魂分裂之自爆群狼',
+        desc: '因自身靈壓過於龐大而導致同伴紛紛自然消散，出於孤獨將自身靈魂分裂成莉莉妮特。平日慵懶厭戰，戰鬥力極度恐怖。',
+        quote: '「我只是一個人太寂寞了...好想和你們一起並肩走下去。」',
+        badgeColor: 'bg-red-900/60 text-red-300 border-red-500/40'
+      },
+      {
+        name: '拜勒崗・魯伊森邦 (Baraggan)',
+        nameJp: 'Baraggan Louisenbairn',
+        faction: '虛夜宮十刃',
+        role: '十刃第 2 刃 (Segunda Espada) / 衰老之象徵',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/11/73426.jpg',
+        kanji: '骷',
+        avatarGradient: 'from-amber-600 to-stone-900',
+        weapon: '歸刃：髑髏大帝 (Arrogante)',
+        ability: '歸刃語「腐朽吧，髑髏大帝！」；死之吹息 (Respira 絕對衰老老化領域，所觸碰之骨骼、鬼道、靈壓瞬間朽化粉碎)',
+        desc: '藍染降臨前統治整座虛夜宮的原虛圈帝皇。身披華麗王袍，持死亡戰斧，支配所有生物不可抗拒的「時間與衰老」。',
+        quote: '「世間萬物皆會在時間的洪流中腐朽，唯有衰老才是唯一的絕對！」',
+        badgeColor: 'bg-orange-950 text-orange-300 border-orange-500/40'
+      },
+      {
+        name: '蒂雅・赫麗貝爾 (Tier Halibel)',
+        nameJp: 'Tier Halibel',
+        faction: '虛夜宮十刃',
+        role: '十刃第 3 刃 (Tercera Espada) / 犧牲之象徵',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/3/77109.jpg',
+        kanji: '鮫',
+        avatarGradient: 'from-amber-500 to-teal-900',
+        weapon: '歸刃：皇鮫后 (Tiburón)',
+        ability: '歸刃語「征討他，皇鮫后！」；斷瀑 (Cascada 釋放浩瀚浪潮)；灼海流 (Hirviendo 沸騰熱水蒸氣)',
+        desc: '十刃中唯一的女性破面，沉穩寡言但極其珍視從屬官。在藍染戰敗後繼承虛夜宮統治，帶領虛圈走向和平。',
+        quote: '「沒有任何犧牲的世界是不存在的。為了守護同伴，我甘願背負這份沉重。」',
+        badgeColor: 'bg-amber-950 text-amber-300 border-amber-500/40'
+      },
+      {
+        name: '妮莉艾露 (Nelliel)',
+        nameJp: 'Nelliel Tu Odelschwanck',
+        faction: '虛夜宮十刃',
+        role: '前十刃第 3 刃 (Former 3rd Espada)',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/11/106368.jpg',
+        kanji: '妮',
+        avatarGradient: 'from-teal-500 to-emerald-950',
+        weapon: '歸刃：羚騎士 (Gamuza)',
+        ability: '歸刃語「謳歌吧，羚騎士！」；重奏虛閃 (Cero Doble 吞噬對手虛閃並加倍回射)；翠之射槍 (Lanzador Verde 迴旋投擲貫穿長槍)',
+        desc: '愛好和平、重情重義的原第3刃。曾遭諾伊特拉暗算破壞面具退化為幼童妮露，後在一護危難時恢復原本成熟強大的戰士英姿。',
+        quote: '「奪取弱者的性命根本沒有任何榮耀，那只不過是單純的殘酷而已。」',
+        badgeColor: 'bg-teal-950 text-teal-300 border-teal-500/40'
+      },
+      // 無形帝國
+      {
+        name: '猶哈巴赫 (Yhwach)',
+        nameJp: 'Yhwach',
+        faction: '無形帝國',
+        role: '滅卻師始祖 / 無形帝國皇帝 / 靈王之子',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/4/485988.jpg',
+        kanji: '王',
+        avatarGradient: 'from-rose-700 to-neutral-950',
+        weapon: '聖文字「A - 全知全能 (The Almighty)」',
+        ability: '睜開三瞳洞察並隨意改寫所有未來；聖別 (Auswählen 遠程強行回收所有滅卻師力量)；奪取三界神明靈王之軀',
+        desc: '沉睡千年甦醒的滅卻師帝皇。擁有能看清未來並將未來按照自身意志徹底改寫的神之力。',
+        quote: '「在我的雙眼所見的未來之中，你已經沒有任何希望可言。」',
+        badgeColor: 'bg-rose-950 text-rose-300 border-rose-500/40'
+      },
+      {
+        name: '兵主部一兵衛 (Ichibei)',
+        nameJp: 'Hyosube Ichibei',
+        faction: '零番隊',
+        role: '零番隊領袖 / 真名呼和尚',
+        image: 'https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/10/485985.jpg',
+        kanji: '和',
+        avatarGradient: 'from-neutral-700 to-black',
+        weapon: '一文字 ➔ 真打・白筆一文字',
+        ability: '始解「染黑吧，一文字」（抹消世間一切事物的名字與概念）；真打「白筆一文字」（賦予脆弱之新名諱如黑蟻）',
+        desc: '屍魂界一切事物名字的賦予者與守護者。貌似和藹圓潤，實則為掌控三界本源概念之遠古真神。',
+        quote: '「老衲乃給屍魂界所有事物命名的長老。汝之名，已被老衲塗黑了。」',
+        badgeColor: 'bg-neutral-900/80 text-neutral-300 border-neutral-500/40'
+      }
+    ];
+
+    // -------------------------------------------------------------
+    // 4. RENDER FUNCTIONS
+    // -------------------------------------------------------------
+    function renderZanpakuto(data) {
+      const grid = document.getElementById('zanpakutoGrid');
+      grid.innerHTML = data.map(item => `
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-white/5">
+              <span class="text-xs font-mono font-bold text-blue-400">${escapeHtml(item.faction)}</span>
+              <span class="text-[11px] px-2 py-0.5 rounded bg-white/5 text-gray-400">${escapeHtml(item.attribute)}</span>
+            </div>
+            
+            <div class="mt-4">
+              <h3 class="text-xl font-bold text-white font-serif-tc group-hover:text-blue-300 transition-colors">
+                ${escapeHtml(item.name)}
+              </h3>
+              <p class="text-xs text-gray-400 mt-0.5">持有者：<span class="text-gray-200 font-semibold">${escapeHtml(item.user)}</span></p>
+            </div>
+
+            <!-- Shikai Command Highlight -->
+            <div class="mt-5 p-3 rounded-xl shikai-quote">
+              <div class="text-[11px] font-mono text-purple-300 uppercase tracking-wider font-semibold">始解解放語</div>
+              <div class="text-sm font-serif-tc font-bold text-white mt-1">
+                ${escapeHtml(item.shikaiCmd)}
+              </div>
+              <div class="text-xs text-gray-300 mt-1 leading-relaxed whitespace-pre-line">
+                ${escapeHtml(item.shikaiDesc)}
+              </div>
+            </div>
+
+            <!-- Bankai Highlight -->
+            <div class="mt-4 p-3 rounded-xl bg-white/[0.03] border border-white/5">
+              <div class="text-[11px] font-mono text-pink-400 uppercase tracking-wider font-semibold">卍解（Bankai）</div>
+              <div class="text-sm font-serif-tc font-bold text-white mt-1">
+                ${escapeHtml(item.bankaiName)}
+              </div>
+              <div class="text-xs text-gray-400 mt-1 leading-relaxed whitespace-pre-line">
+                ${escapeHtml(item.bankaiDesc)}
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderKido(data) {
+      const grid = document.getElementById('kidoGrid');
+      grid.innerHTML = data.map(item => `
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-white/5">
+              <span class="text-xs font-mono font-bold ${item.type === '破道' ? 'text-red-400' : 'text-cyan-400'}">
+                ${escapeHtml(item.num)} 【${escapeHtml(item.type)}】
+              </span>
+              <button onclick="copyIncantation('${escapeJsString(item.incantation)}')" class="text-xs text-gray-400 hover:text-white px-2 py-1 rounded bg-white/5 hover:bg-white/10 flex items-center space-x-1 transition-all">
+                <i data-lucide="copy" class="w-3 h-3"></i>
+                <span>複製詠唱</span>
+              </button>
+            </div>
+
+            <h3 class="text-xl font-bold text-white font-serif-tc mt-3">
+              ${escapeHtml(item.name)}
+            </h3>
+
+            <!-- Ancient Incantation Box -->
+            <div class="mt-3 p-3.5 rounded-xl bg-cyan-950/20 border border-cyan-500/20">
+              <div class="text-[11px] font-mono text-cyan-300 font-semibold mb-1">古典詠唱文：</div>
+              <p class="text-xs sm:text-sm text-gray-200 font-serif-tc italic leading-relaxed">
+                ${escapeHtml(item.incantation)}
+              </p>
+            </div>
+
+            <!-- Ability Description -->
+            <p class="mt-3 text-xs text-gray-400 leading-relaxed">
+              ${escapeHtml(item.desc)}
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-gray-500">
+            <span>階級：${escapeHtml(item.tier)}</span>
+            <span>常見施術者：${escapeHtml(item.user)}</span>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function renderCharacters(data) {
+      const grid = document.getElementById('charactersGrid');
+      grid.innerHTML = data.map((char, index) => {
+        const fallbackKanji = char.kanji || char.name.charAt(0);
+        const imgUrl = char.image || `https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/3/284121.jpg`;
+        return `
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer" onclick="openCharModal(${index})">
+          <div>
+            <!-- Header with Avatar Photo & Faction -->
+            <div class="flex items-start justify-between pb-4 border-b border-white/5 gap-3">
+              <div class="flex items-center space-x-3.5">
+                <div class="w-16 h-16 rounded-2xl overflow-hidden bg-gradient-to-tr ${char.avatarGradient || 'from-purple-600 to-indigo-900'} p-[2px] shrink-0 shadow-lg relative group-hover:scale-105 transition-transform">
+                  <img src="${imgUrl}" alt="${char.name}" referrerpolicy="no-referrer" class="w-full h-full object-cover object-top rounded-2xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                  <div class="w-full h-full bg-[#0e121c] rounded-2xl hidden items-center justify-center font-serif-tc text-2xl font-black text-white shadow-inner">
+                    ${fallbackKanji}
+                  </div>
+                </div>
+                <div>
+                  <span class="text-xs px-2.5 py-0.5 rounded-full border ${char.badgeColor} font-medium inline-block mb-1">
+                    ${escapeHtml(char.faction)}
+                  </span>
+                  <div class="text-[11px] text-gray-400 font-mono">${escapeHtml(char.nameJp)}</div>
+                  <h3 class="text-xl font-black text-white font-serif-tc group-hover:text-purple-300 transition-colors leading-tight">
+                    ${escapeHtml(char.name)}
+                  </h3>
+                </div>
+              </div>
+              <span class="text-xs text-gray-500 group-hover:text-purple-400 transition-colors flex items-center space-x-1 shrink-0 pt-1">
+                <span>詳細</span>
+                <i data-lucide="arrow-right" class="w-3 h-3"></i>
+              </span>
+            </div>
+
+            <p class="text-xs text-indigo-300 mt-3 font-semibold">${escapeHtml(char.role)}</p>
+
+            <div class="mt-4 space-y-2 text-xs">
+              <div class="bg-white/5 p-2.5 rounded-lg border border-white/5">
+                <span class="text-gray-400">斬魄刀 / 武器：</span>
+                <span class="text-white font-semibold">${escapeHtml(char.weapon)}</span>
+              </div>
+              <div class="bg-white/5 p-2.5 rounded-lg border border-white/5">
+                <span class="text-gray-400">能力奧義：</span>
+                <span class="text-gray-300">${escapeHtml(char.ability)}</span>
+              </div>
+            </div>
+
+            <p class="mt-4 text-xs text-gray-400 leading-relaxed line-clamp-2">
+              ${escapeHtml(char.desc)}
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-white/5 text-xs text-gray-400 font-serif-tc italic">
+            ${escapeHtml(char.quote)}
+          </div>
+        </div>
+      `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    // -------------------------------------------------------------
+    // 5. FILTERING & SEARCH
+    // -------------------------------------------------------------
+    let currentZanFilter = 'all';
+    let currentKidoFilter = 'all';
+    let currentCharFilter = 'all';
+
+    function filterZanpakuto(cat) {
+      currentZanFilter = cat;
+      document.querySelectorAll('.zan-filter-btn').forEach(b => {
+        b.className = "zan-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all";
+      });
+      event.target.className = "zan-filter-btn active px-3 py-1.5 rounded-lg bg-blue-600 text-white font-medium transition-all";
+
+      const filtered = zanpakutoData.filter(item => {
+        if (cat === 'all') return true;
+        return item.category === cat;
+      });
+      renderZanpakuto(filtered);
+    }
+
+    function filterKido(cat) {
+      currentKidoFilter = cat;
+      document.querySelectorAll('.kido-filter-btn').forEach(b => {
+        b.className = "kido-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all";
+      });
+      event.target.className = "kido-filter-btn active px-3 py-1.5 rounded-lg bg-cyan-600 text-white font-medium transition-all";
+
+      const filtered = kidoData.filter(item => {
+        if (cat === 'all') return true;
+        if (cat === '高階禁術') return item.tier === '高階禁術';
+        return item.type === cat;
+      });
+      renderKido(filtered);
+    }
+
+    function filterChars(cat) {
+      currentCharFilter = cat;
+      document.querySelectorAll('.char-filter-btn').forEach(b => {
+        b.className = "char-filter-btn px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white transition-all";
+      });
+      event.target.className = "char-filter-btn active px-3 py-1.5 rounded-lg bg-purple-600 text-white font-medium transition-all";
+
+      const filtered = charactersData.filter(item => {
+        if (cat === 'all') return true;
+        return item.faction === cat;
+      });
+      renderCharacters(filtered);
+    }
+
+    function handleGlobalSearch(keyword) {
+      const q = keyword.trim().toLowerCase();
+      if (!q) {
+        renderZanpakuto(zanpakutoData);
+        renderKido(kidoData);
+        renderCharacters(charactersData);
+        return;
+      }
+
+      const filteredZan = zanpakutoData.filter(z => 
+        z.name.toLowerCase().includes(q) || 
+        z.user.toLowerCase().includes(q) || 
+        z.shikaiCmd.toLowerCase().includes(q) || 
+        z.bankaiName.toLowerCase().includes(q)
+      );
+      renderZanpakuto(filteredZan);
+
+      const filteredKido = kidoData.filter(k => 
+        k.num.toLowerCase().includes(q) || 
+        k.name.toLowerCase().includes(q) || 
+        k.incantation.toLowerCase().includes(q) || 
+        k.desc.toLowerCase().includes(q)
+      );
+      renderKido(filteredKido);
+
+      const filteredChars = charactersData.filter(c => 
+        c.name.toLowerCase().includes(q) || 
+        c.nameJp.toLowerCase().includes(q) || 
+        c.weapon.toLowerCase().includes(q) || 
+        c.role.toLowerCase().includes(q)
+      );
+      renderCharacters(filteredChars);
+    }
+
+    // -------------------------------------------------------------
+    // 6. MODAL & UTILS
+    // -------------------------------------------------------------
+    function openCharModal(idx) {
+      const char = charactersData[idx];
+      const modal = document.getElementById('detailModal');
+      const content = document.getElementById('modalContent');
+      const fallbackKanji = char.kanji || char.name.charAt(0);
+      const imgUrl = char.image || `https://images.weserv.nl/?url=cdn.myanimelist.net/images/characters/3/284121.jpg`;
+
+      content.innerHTML = `
+        <div class="flex items-center space-x-4 pb-4 border-b border-white/10">
+          <div class="w-20 h-20 rounded-2xl overflow-hidden bg-gradient-to-tr ${char.avatarGradient || 'from-purple-600 to-indigo-900'} p-[2px] shrink-0 shadow-xl">
+            <img src="${imgUrl}" alt="${char.name}" referrerpolicy="no-referrer" class="w-full h-full object-cover object-top rounded-2xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="w-full h-full bg-[#0e121c] rounded-2xl hidden items-center justify-center font-serif-tc text-3xl font-black text-white">
+              ${fallbackKanji}
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs px-2.5 py-0.5 rounded-full border ${char.badgeColor} font-medium">
+                ${escapeHtml(char.faction)}
+              </span>
+              <span class="text-xs text-gray-400 font-mono">${escapeHtml(char.nameJp)}</span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-black text-white font-serif-tc mt-1">
+              ${escapeHtml(char.name)}
+            </h3>
+            <p class="text-xs sm:text-sm text-purple-300 font-medium">${escapeHtml(char.role)}</p>
+          </div>
+        </div>
+
+        <div class="mt-5 p-4 rounded-xl bg-purple-950/20 border border-purple-500/20 font-serif-tc italic text-gray-200 text-sm">
+          ${escapeHtml(char.quote)}
+        </div>
+
+        <div class="mt-5 space-y-3 text-sm">
+          <div class="p-3.5 bg-white/5 rounded-xl border border-white/5">
+            <span class="text-gray-400 block text-xs">專屬武器 / 斬魄刀 / 歸刃 / 聖文字：</span>
+            <span class="text-white font-bold mt-0.5 block">${escapeHtml(char.weapon)}</span>
+          </div>
+
+          <div class="p-3.5 bg-white/5 rounded-xl border border-white/5">
+            <span class="text-gray-400 block text-xs">能力奧義與特質招式：</span>
+            <span class="text-gray-200 mt-0.5 block leading-relaxed whitespace-pre-line">${escapeHtml(char.ability)}</span>
+          </div>
+
+          <div class="p-3.5 bg-white/5 rounded-xl border border-white/5">
+            <span class="text-gray-400 block text-xs">人物生平與戰役典籍：</span>
+            <span class="text-gray-300 mt-1 block leading-relaxed">${escapeHtml(char.desc)}</span>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('detailModal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function copyIncantation(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('✓ 已複製古語詠唱文到剪貼簿');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-20');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-20');
+      }, 2200);
+    }
+
+    function escapeHtml(string) {
+      return String(string).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function escapeJsString(str) {
+      return String(str).replace(/'/g, "\\'").replace(/"/g, '\\"');
+    }
+
+    // -------------------------------------------------------------
+    // 7. ZANPAKUTO & SQUAD ASSIGNMENT QUIZ ENGINE
+    // -------------------------------------------------------------
+    let activeQuizMode = 'zanpakuto'; // 'zanpakuto' or 'squad'
+    let quizCurrentIdx = 0;
+    let quizScores = { zangetsu: 0, senbon: 0, kyoka: 0, ryujin: 0, sode: 0, katen: 0 };
+    let squadScores = { squad1: 0, squad2: 0, squad4: 0, squad6: 0, squad8: 0, squad10: 0, squad11: 0, squad12: 0, squad13: 0 };
+    let currentQuizResultData = null;
+
+    const quizQuestions = [
+      {
+        category: '突發危機篇',
+        question: '1. 當你所處的環境突然遭遇毀滅性打擊且局勢完全失控時，你最初的直覺是？',
+        options: [
+          { key: 'zangetsu', letter: 'A', text: '毫不猶豫衝到最前方！即便自己承受最大創傷，也要替身後的人爭取一線生機。' },
+          { key: 'senbon', letter: 'B', text: '迅速站定陣腳，嚴格維持隊伍秩序與防守邊界，越是混亂越不能自亂紀律與規矩。' },
+          { key: 'kyoka', letter: 'C', text: '抽身冷靜觀察混亂的源頭，因為混亂往往是看清一切真相與重新洗牌掌控局面的契機。' },
+          { key: 'ryujin', letter: 'D', text: '爆發出不可動搖的威嚴氣場，以強硬決斷接管指揮，強行以絕對魄力壓制所有動盪。' },
+          { key: 'sode', letter: 'E', text: '摒除所有多餘的恐懼與雜念，以極致的專注在暗處默默解決威脅核心。' },
+          { key: 'katen', letter: 'F', text: '苦笑一聲面對現實，深知死生有命，但仍會在看似散漫的動作中尋求生存破局點。' }
+        ]
+      },
+      {
+        category: '人際羈絆篇',
+        question: '2. 在你的內心深處，你認為真正值得託付生死的夥伴關係本質是？',
+        options: [
+          { key: 'zangetsu', letter: 'A', text: '無需多言的絕對默契，只要彼此信念一致，背後永遠可以放心交給對方。' },
+          { key: 'senbon', letter: 'B', text: '建立在彼此恪守承諾與相互敬重之上，即便至親也保有不可踰越的尊嚴與底線。' },
+          { key: 'kyoka', letter: 'C', text: '凡人往往因無知與軟弱才依賴他人；真正強大的人終究必須習慣孤獨前行。' },
+          { key: 'ryujin', letter: 'D', text: '共同背負同一個崇高誓約與責任，為了大局利益隨時能彼此成全。' },
+          { key: 'sode', letter: 'E', text: '如同落雪般無瑕純粹的信任，即便全世界與之為敵，我也會默默陪伴左右。' },
+          { key: 'katen', letter: 'F', text: '懂得彼此心中的痛苦與無奈，能一起在黃昏中卸下防備喝上一杯酒的靈魂同僚。' }
+        ]
+      },
+      {
+        category: '處世哲學篇',
+        question: '3. 若你發現一個被隱瞞已久的殘酷真相，而一旦公開它將粉碎周遭眾人賴以生存的安寧，你會？',
+        options: [
+          { key: 'zangetsu', letter: 'A', text: '哪怕再殘酷痛苦也必須揭露！沉浸在虛假安寧中的生活毫無意義。' },
+          { key: 'senbon', letter: 'B', text: '依照既定的規範與權限層級處理，個人沒有權力擅自決定群體的命運。' },
+          { key: 'kyoka', letter: 'C', text: '將真相作為手中的籌碼，在暗中編織最適當的局面，引導眾人走向我期許的未來。' },
+          { key: 'ryujin', letter: 'D', text: '獨自一人扛下這個秘密與罪責，為了大局秩序的延續，甘願承受歷史的非議。' },
+          { key: 'sode', letter: 'E', text: '默默守候在在乎的人身邊，用自己的肩膀替他們抵擋真相帶來的衝擊。' },
+          { key: 'katen', letter: 'F', text: '嘆息世事荒謬，將真相隱晦地化為日常警語，只留給具備清醒智慧的人去意會。' }
+        ]
+      },
+      {
+        category: '心理防線篇',
+        question: '4. 當你全心信任的人在關鍵時刻選擇了背離與背叛，你最真實的情緒反應是？',
+        options: [
+          { key: 'zangetsu', letter: 'A', text: '難以抑制的憤怒與痛心，即便拼上一切也要親自向對方問清楚真正的原委。' },
+          { key: 'senbon', letter: 'B', text: '迅速隱藏所有外露情緒，在心中徹底劃清界線，從此視若陌路不再多言。' },
+          { key: 'kyoka', letter: 'C', text: '絲毫不感到驚訝，因為背叛本就是人心計算中的概率之一，順勢將計就計。' },
+          { key: 'ryujin', letter: 'D', text: '對動搖根基與綱紀的行為予以最嚴厲的制裁，任何背誓者皆須為代價負責。' },
+          { key: 'sode', letter: 'E', text: '心中陷入長久的寂靜與刺痛，將柔軟的心扉冰封起來，冷靜完成未完的使命。' },
+          { key: 'katen', letter: 'F', text: '淡淡苦笑，戰場本就沒有永恆的盟友，活下來的人唯有繼續硬著頭皮走下去。' }
+        ]
+      },
+      {
+        category: '力量本源篇',
+        question: '5. 如果你能獲得一項改變命運的極致天賦，你希望這項特質的核心是什麼？',
+        options: [
+          { key: 'zangetsu', letter: 'A', text: '擁有打破任何阻礙與宿命鎖鏈的爆發力，以及面對任何打擊都絕不彎曲的意志。' },
+          { key: 'senbon', letter: 'B', text: '擁有兼顧無瑕攻防與極致儀態的自制力，在狂風暴雨中依然優雅從容。' },
+          { key: 'kyoka', letter: 'C', text: '擁有洞察一切因果與人心迷思的智慧，始終站在更高維度俯瞰局勢發展。' },
+          { key: 'ryujin', letter: 'D', text: '擁有宛如擎天巨柱般不可撼動的威嚴與威懾力，一聲令下便能令混亂平息。' },
+          { key: 'sode', letter: 'E', text: '擁有令躁動混亂徹底歸於清澈平靜的純淨力，在酷寒絕境中依然綻放生機。' },
+          { key: 'katen', letter: 'F', text: '擁有在複雜混沌的規則中游刃有餘的洞察力，隨時能在生死一線間逆轉形勢。' }
+        ]
+      },
+      {
+        category: '人格厭惡篇',
+        question: '6. 在日常處世中，你最厭惡看見自己或他人顯露出哪一種軟弱？',
+        options: [
+          { key: 'zangetsu', letter: 'A', text: '懦弱虛偽，在同伴遭遇危險時只懂得藉口推脫與轉身逃跑。' },
+          { key: 'senbon', letter: 'B', text: '舉止輕佻浮躁，對原則、教養與榮譽毫無基本的敬畏心。' },
+          { key: 'kyoka', letter: 'C', text: '愚昧盲信，自願把獨立思考的權利交給平庸的常規支配。' },
+          { key: 'ryujin', letter: 'D', text: '散漫無紀律，在應當擔當重任之時擅自擅離職守與動搖人心。' },
+          { key: 'sode', letter: 'E', text: '殘暴放縱，肆無忌憚地傷害他人脆弱純潔的信賴。' },
+          { key: 'katen', letter: 'F', text: '盲目自命清高，不懂得現實的殘酷與妥協的代價，白白犧牲。' }
+        ]
+      },
+      {
+        category: '心靈歸宿篇',
+        question: '7. 在經歷了一場漫長且心力交瘁的爭端與搏鬥之後，你最渴望的心靈歸宿是？',
+        options: [
+          { key: 'zangetsu', letter: 'A', text: '回到平靜安寧的日常，看著家人與夥伴真誠放鬆的笑容。' },
+          { key: 'senbon', letter: 'B', text: '漫步於空曠肅穆的庭院中，回首審視自己的言行，確認自己從未辜負心中的戒律。' },
+          { key: 'kyoka', letter: 'C', text: '獨自登上無人企及的高處，俯瞰世間萬象皆按照既定的步調安穩運轉。' },
+          { key: 'ryujin', letter: 'D', text: '確信自己畢生守護的秩序與道統得以薪火相傳，後繼有人。' },
+          { key: 'sode', letter: 'E', text: '在一片寧靜純白的寂靜中沉沉睡去，讓心靈累積的塵埃得到徹底洗滌。' },
+          { key: 'katen', letter: 'F', text: '卸下一切沉重的擔子與佩劍，在微涼的暮色中與三兩知己微醺閒談。' }
+        ]
+      },
+      {
+        category: '歷史刻印篇',
+        question: '8. 當多年之後世人再度提起你的名字，你最希望自己被如何評價？',
+        options: [
+          { key: 'zangetsu', letter: 'A', text: '「無論前方有多絕望，他永遠站在我們身前，為大家劈開了活下去的希望。」' },
+          { key: 'senbon', letter: 'B', text: '「他一生恪守崇高榮譽與道義，從未讓心中的尊嚴產生過半點污痕。」' },
+          { key: 'kyoka', letter: 'C', text: '「他看破了世俗的迷霧與幻象，以無可挑剔的遠見主宰了自己的命運。」' },
+          { key: 'ryujin', letter: 'D', text: '「他是那個風雨飄搖年代不可動搖的定海神針，一己之力捍衛了千年的正義。」' },
+          { key: 'sode', letter: 'E', text: '「他在最嚴寒冷冽的絕境中，始終保持著最純粹的溫柔與堅毅守候。」' },
+          { key: 'katen', letter: 'F', text: '「他深知世間無常的痛苦與無奈，但依然在命運的荒謬戲曲中活得瀟灑深沉。」' }
+        ]
+      }
+    ];
+
+    const quizResults = {
+      zangetsu: {
+        id: 'zangetsu',
+        title: '天鎖斬月 (Tensa Zangetsu)',
+        sub: '【孤高守護之刃】',
+        user: '黑崎一護',
+        attribute: '近戰・極限靈壓凝聚系',
+        shikaiCmd: '常時解放型・月牙天衝',
+        bankaiName: '天鎖斬月 (Tensa Zangetsu)',
+        matchPercent: '99.4%',
+        themeGradient: 'from-blue-600 via-indigo-600 to-purple-800',
+        badgeColor: 'text-blue-300 border-blue-500/40 bg-blue-950/60',
+        persona: '你擁有純粹而炙熱的靈魂，凡事憑藉直覺與良知行事。你討厭繁複虛偽的規矩，但當珍視的人受到威脅時，你能爆發出超越極限十倍的恐怖力量。在逆境中，你永遠是那個打破宿命的奇蹟之人。'
+      },
+      senbon: {
+        id: 'senbon',
+        title: '千本櫻 (Senbonzakura)',
+        sub: '【極致優雅之櫻】',
+        user: '朽木白哉',
+        attribute: '物理斬擊・風華群刃系',
+        shikaiCmd: '散落吧，千本櫻！',
+        bankaiName: '千本櫻景嚴 (Senbonzakura Kageyoshi)',
+        matchPercent: '98.8%',
+        themeGradient: 'from-pink-600 via-rose-600 to-purple-900',
+        badgeColor: 'text-pink-300 border-pink-500/40 bg-pink-950/60',
+        persona: '你內心深處擁有崇高的尊嚴與自律，行事沉著、舉止優雅。你對自己要求極高，重視原則與信諾。外表看似冷峻如冰，實則將最深厚的溫柔深藏心底。你的戰鬥是漫天紛飛的櫻雨，既是極致的美，亦是絕對的致命。'
+      },
+      kyoka: {
+        id: 'kyokasuigetsu',
+        title: '鏡花水月 (Kyoka Suigetsu)',
+        sub: '【絕對支配之月】',
+        user: '藍染惣右介',
+        attribute: '催眠系最強・完全催眠',
+        shikaiCmd: '碎裂吧，鏡花水月！',
+        bankaiName: '超越者之境（崩玉完全體）',
+        matchPercent: '99.1%',
+        themeGradient: 'from-purple-600 via-indigo-700 to-slate-900',
+        badgeColor: 'text-purple-300 border-purple-500/40 bg-purple-950/60',
+        persona: '你擁有高深莫測的洞察力與過人智略，能一眼看透人性的弱點與局勢的走向。你具備天生的領袖氣場與睥睨一切的自信，不甘於受常俗規則束縛。在你眼中，世間的一切都只是你落子博弈的棋盤。'
+      },
+      ryujin: {
+        id: 'ryujin',
+        title: '流刃若火 (Ryujin Jakka)',
+        sub: '【至尊浩蕩之火】',
+        user: '山本元柳齋重國',
+        attribute: '炎熱系最強・最古老之刃',
+        shikaiCmd: '萬象一切，皆為灰燼，流刃若火！',
+        bankaiName: '殘火太刀 (Zanka no Tachi)',
+        matchPercent: '98.5%',
+        themeGradient: 'from-amber-600 via-orange-600 to-red-950',
+        badgeColor: 'text-amber-300 border-amber-500/40 bg-amber-950/60',
+        persona: '你擁有宛如大地磐石般的威嚴與擔當，是身邊眾人最值得信賴的定海神針。你嫉惡如仇，信奉公理與秩序。一旦你下定決心動真格，滔天的氣魄與爆發力將宛如一千五百萬度的烈陽，將所有障礙徹底抹殺。'
+      },
+      sode: {
+        id: 'sode',
+        title: '袖白雪 (Sode no Shirayuki)',
+        sub: '【極寒純白之雪】',
+        user: '朽木露琪亞',
+        attribute: '屍魂界最美麗的純白冰雪刀',
+        shikaiCmd: '凌舞吧，袖白雪！',
+        bankaiName: '白霞罰 (Hakka no Togame)',
+        matchPercent: '97.9%',
+        themeGradient: 'from-cyan-500 via-sky-600 to-indigo-950',
+        badgeColor: 'text-sky-300 border-sky-500/40 bg-sky-950/60',
+        persona: '你擁有一顆不染纖塵的純淨之心，心思細膩、重情重義。你外柔內剛，無論遭遇多少挫折與迷惘，都能在嚴寒的霜雪中堅毅地站穩腳跟。你的清澈能撫慰身邊所有躁動的心靈，化為最純淨的白霞。'
+      },
+      katen: {
+        id: 'katen',
+        title: '花天狂骨 (Katen Kyokotsu)',
+        sub: '【生死戲曲之刃】',
+        user: '京樂春水',
+        attribute: '雙刀・兒童遊戲規則具象化',
+        shikaiCmd: '花風紊亂，花神啼鳴；天風紊亂，天魔嗤笑。花天狂骨！',
+        bankaiName: '花天狂骨・黑松心中 (Karamatsu Shinju)',
+        matchPercent: '98.2%',
+        themeGradient: 'from-rose-700 via-purple-900 to-black',
+        badgeColor: 'text-rose-300 border-rose-500/40 bg-rose-950/60',
+        persona: '你表面上散漫不羈、隨遇而安，甚至帶著幾分玩世不恭的幽默感；但實際上，你比任何人都更懂得這世間生死的沉重與無奈。你從不自命清高，在關鍵時刻擁有背負一切罪孽與陰暗面的強悍氣魄。'
+      }
+    };
+
+    const squadQuestions = [
+      {
+        category: '軍團職責篇',
+        question: '1. 若加入護廷十三隊，在戰時你最渴望擔當的核心職責是？',
+        options: [
+          { key: 'squad11', letter: 'A', text: '衝鋒陷陣！在第一線享受最純粹的斬魄刀肉搏廝殺，越強大的對手越令我興奮。' },
+          { key: 'squad12', letter: 'B', text: '科研改造！在後方實驗室分析敵方靈子數據，研製新型特異機關與神經藥劑。' },
+          { key: 'squad4', letter: 'C', text: '回道救護！深入前線營救傷亡隊士，施展高階回道與防禦結界，守護同伴性命。' },
+          { key: 'squad2', letter: 'D', text: '隱密暗殺！憑藉極速瞬步與無聲暗殺術潛入敵後，於無形中斬除敵方首腦。' },
+          { key: 'squad6', letter: 'E', text: '法度表率！以身作則恪守名門規矩與紀律，成為維護全廷尊嚴的最堅實基石。' },
+          { key: 'squad13', letter: 'F', text: '現世巡邏！常駐人間界淨化虛之靈魄，與同伴相互扶持，守護平凡人世的煙火。' },
+          { key: 'squad1', letter: 'G', text: '大局統領！統籌全局戰略調度，以不可撼動的天道正義氣魄號令全軍。' }
+        ]
+      },
+      {
+        category: '隊長領袖篇',
+        question: '2. 若讓你選擇一位隊長長期共事，你最嚮往哪種領袖風格？',
+        options: [
+          { key: 'squad11', letter: 'A', text: '更木劍八 —— 只要你有骨氣、能打硬仗，天天跟你痛快切磋，毫無繁文縟節！' },
+          { key: 'squad12', letter: 'B', text: '涅繭利 / 浦原喜助 —— 狂傲科學怪傑，每天都能接觸最前沿的禁忌發明與改造。' },
+          { key: 'squad4', letter: 'C', text: '卯之花烈 —— 慈悲溫柔但深不可測，能傳授最頂尖的救護醫術與古流劍道。' },
+          { key: 'squad2', letter: 'D', text: '碎蜂 / 四楓院夜一 —— 雷厲風行、身法神速，紀律嚴明且執行力極強。' },
+          { key: 'squad6', letter: 'E', text: '朽木白哉 —— 嚴肅公正、貴族典範，只要恪守法度必能贏得他最高的敬重。' },
+          { key: 'squad13', letter: 'F', text: '浮竹十四郎 / 朽木露琪亞 —— 為人正直親切，護短隊士，宛如溫暖的大家庭。' },
+          { key: 'squad8', letter: 'G', text: '京樂春水 —— 表面悠閒好酒，實則大智若愚，在關鍵時刻能為下屬頂住一切壓力。' }
+        ]
+      },
+      {
+        category: '駐隊生活篇',
+        question: '3. 輪休放假或戰鬥之餘，你最自在的度過方式是？',
+        options: [
+          { key: 'squad11', letter: 'A', text: '泡在道場揮刀流汗，找隊裡最強的傢伙痛快切磋幾百回合！' },
+          { key: 'squad12', letter: 'B', text: '把自己關在個人工作室，拆解分析怪異的新奇樣本與古代靈子典籍。' },
+          { key: 'squad4', letter: 'C', text: '泡一壺溫暖的花草茶，細心整理藥草或照料隊舍庭院的花木。' },
+          { key: 'squad2', letter: 'D', text: '悄無聲息地隱沒在屋頂樹梢，練習匿蹤步法或觀察人群情報。' },
+          { key: 'squad6', letter: 'E', text: '端坐庭院練習書法與茶道，讓心靈在肅穆的儀態中維持高度自律。' },
+          { key: 'squad10', letter: 'F', text: '偷偷前往現世街道巡邏吃甜點，感受微風與人間的生活氣息。' },
+          { key: 'squad8', letter: 'G', text: '在暮色下的酒肆微醺小酌，與二三知己暢談古今軼事。' }
+        ]
+      },
+      {
+        category: '戰鬥信念篇',
+        question: '4. 當身處不可避免的殘酷惡戰，你的行動準則是？',
+        options: [
+          { key: 'squad11', letter: 'A', text: '「勝敗全憑刀鋒說話！在我的血流乾之前，誰也別想讓我後退一步！」' },
+          { key: 'squad12', letter: 'B', text: '「敵人只不過是實驗樣本，用我調製的神經毒素與針對性抗體瓦解他。」' },
+          { key: 'squad4', letter: 'C', text: '「築起絕對防禦結界，哪怕犧牲自己的靈壓，也要換取傷員零犧牲。」' },
+          { key: 'squad2', letter: 'D', text: '「不留任何多餘痕跡，以最迅捷的二擊必殺在暗處結束敵人的性命。」' },
+          { key: 'squad6', letter: 'E', text: '「法規與名門尊嚴不可踐踏，即便付出代價也要堂堂正正正面獲勝。」' },
+          { key: 'squad13', letter: 'F', text: '「戰鬥是為了保護背後珍視的人，只要同伴無恙，我甘願承擔一切代價。」' },
+          { key: 'squad1', letter: 'G', text: '「戰爭沒有勝利者，但身為柱石，哪怕背負千年罪名也要確保大局延續。」' }
+        ]
+      },
+      {
+        category: '隊花座右銘篇',
+        question: '5. 護廷十三隊隊花之花語中，哪一句最能契合你的座右銘？',
+        options: [
+          { key: 'squad11', letter: 'A', text: '『戰鬥』（十一番隊・鋸草）—— 唯有刀鋒交錯碰撞之際，生命才算真正活著。' },
+          { key: 'squad12', letter: 'B', text: '『獨立與探索』（十二番隊・薊）—— 鄙視停滯的完美，唯有未知值得追尋。' },
+          { key: 'squad4', letter: 'C', text: '『撫平哀傷』（四番隊・龍膽）—— 喜歡哀傷的你，用溫柔醫治世間一切創痛。' },
+          { key: 'squad2', letter: 'D', text: '『無欲無形』（二番隊・翁草）—— 隨風而動，見其影而不見其形。' },
+          { key: 'squad6', letter: 'E', text: '『高潔理性』（六番隊・椿）—— 榮譽與法度，乃是靈魂不可動搖的戒律。' },
+          { key: 'squad13', letter: 'F', text: '『希望之光』（十三番隊・待雪草）—— 嚴寒冰雪終會消融，在人間守望春曉。' },
+          { key: 'squad8', letter: 'G', text: '『得一切之物』（八番隊・極樂鳥花）—— 遊戲人間，大智若愚，笑看生死無常。' }
+        ]
+      }
+    ];
+
+    const squadResults = {
+      squad1: {
+        id: 'squad1',
+        title: '一番隊 (First Division)',
+        tag: '【天道威嚴・大局統領之師】',
+        flower: '菊 (Chrysanthemum)',
+        motto: '「真實與清白」',
+        captains: '山本元柳齋重國 ➔ 京樂春水',
+        seat: '一番隊總隊長直轄副官 / 首席軍政參謀',
+        gradient: 'from-amber-600 via-yellow-600 to-red-950',
+        badgeColor: 'border-amber-500/40 text-amber-300 bg-amber-950/60',
+        desc: '你擁有宛如天道磐石般的定力與大局觀，天生具備統領群雄的威嚴與擔當。在風雨飄搖的動盪歲月中，你就是那個能為所有人指明前進道路、力挽狂瀾的領袖人物！'
+      },
+      squad2: {
+        id: 'squad2',
+        title: '二番隊 (Second Division)',
+        tag: '【暗夜疾風・極速暗殺精銳】',
+        flower: '翁草 (Pasqueflower)',
+        motto: '「無欲」',
+        captains: '碎蜂 (Soi Fon) / 四楓院夜一',
+        seat: '隱密機動第一分隊「刑軍」軍團長 / 前線刺客首席',
+        gradient: 'from-yellow-600 via-amber-700 to-neutral-950',
+        badgeColor: 'border-yellow-500/40 text-yellow-300 bg-yellow-950/60',
+        desc: '你行動敏捷果斷、行事雷厲風行，討厭拖泥帶水的繁瑣。你具備超凡的身法與匿蹤直覺，能在黑暗中一擊必殺瓦解危機，是敵人最為畏懼的無形死神！'
+      },
+      squad4: {
+        id: 'squad4',
+        title: '四番隊 (Fourth Division)',
+        tag: '【生機守護・慈悲回道之盾】',
+        flower: '龍膽 (Gentian)',
+        motto: '「喜歡哀傷的你」',
+        captains: '卯之花烈 (初代劍八) ➔ 虎徹勇音',
+        seat: '綜合救護所特級醫官 / 高級回道防禦首席',
+        gradient: 'from-emerald-600 via-teal-700 to-slate-950',
+        badgeColor: 'border-emerald-500/40 text-emerald-300 bg-emerald-950/60',
+        desc: '你擁有無比溫柔善良的心地與強大的耐心，重情重義。然而溫柔並非軟弱，在最危急的戰場上，你沉著冷靜的救護是維持全軍生命線的關鍵，甚至隱藏著令人敬畏的深層力量！'
+      },
+      squad6: {
+        id: 'squad6',
+        title: '六番隊 (Sixth Division)',
+        tag: '【名門表率・高潔法度之衛】',
+        flower: '椿 (Camellia)',
+        motto: '「高潔的理性」',
+        captains: '朽木白哉 (Kuchiki Byakuya) / 副隊長：阿散井戀次',
+        seat: '六番隊第三席・瀞靈廷法規督察先鋒',
+        gradient: 'from-pink-600 via-rose-700 to-indigo-950',
+        badgeColor: 'border-pink-500/40 text-pink-300 bg-pink-950/60',
+        desc: '你行事嚴謹、重視原則與信譽，言行舉止皆具備名門典範的風骨。你嚴以律己，視規矩與榮耀重於一切，在狂風暴雨中依然能保持優雅冷靜的非凡氣魄！'
+      },
+      squad8: {
+        id: 'squad8',
+        title: '八番隊 (Eighth Division)',
+        tag: '【浪漫灑脫・隨性大智之師】',
+        flower: '極樂鳥花 (Bird of Paradise)',
+        motto: '「得一切之物」',
+        captains: '京樂春水 ➔ 矢胴丸莉紗',
+        seat: '八番隊特級情治督察席官',
+        gradient: 'from-rose-700 via-purple-900 to-black',
+        badgeColor: 'border-rose-500/40 text-rose-300 bg-rose-950/60',
+        desc: '你表面看似悠閒不羈、隨遇而安，甚至帶著幾分玩世不恭的風趣；實則你的洞察力極為恐怖，總能在杯酒談笑間看破世事本質，用最智慧深沉的方式化解危機！'
+      },
+      squad10: {
+        id: 'squad10',
+        title: '十番隊 (Tenth Division)',
+        tag: '【前線機動・天才警戒先鋒】',
+        flower: '水仙 (Narcissus)',
+        motto: '「神秘與自我」',
+        captains: '日番谷冬獅郎 / 副隊長：松本亂菊',
+        seat: '十番隊先鋒突擊隊長 / 瀞靈廷巡邏首席',
+        gradient: 'from-cyan-600 via-sky-700 to-blue-950',
+        badgeColor: 'border-cyan-500/40 text-cyan-300 bg-cyan-950/60',
+        desc: '你性格沉著正直、富有強烈責任感，具備超越年齡的老練與敏銳判斷力。在戰場的最前線，你永遠衝鋒在前，用霜雪般清澈的冷靜守護同伴與人間安寧！'
+      },
+      squad11: {
+        id: 'squad11',
+        title: '十一番隊 (Eleventh Division)',
+        tag: '【純粹戰鬥・劍八狂戰軍團】',
+        flower: '鋸草 (Chinese Yarrow)',
+        motto: '「戰鬥」',
+        captains: '更木劍八 (Zaraki Kenpachi) / 斑目一角、綾瀨川弓親',
+        seat: '十一番隊第三席・攻堅肉搏先鋒突擊官',
+        gradient: 'from-red-600 via-rose-800 to-neutral-950',
+        badgeColor: 'border-red-500/40 text-red-300 bg-red-950/60',
+        desc: '你擁有純粹而炙熱的戰士靈魂！你崇尚堂堂正正的實力對決，鄙視繁複虛偽的規矩。在逆境中，你越戰越勇、氣魄驚天，是護廷十三隊最具破壞力的攻堅王牌！'
+      },
+      squad12: {
+        id: 'squad12',
+        title: '十二番隊 (Twelfth Division)',
+        tag: '【技術開發・生化科研先驅】',
+        flower: '薊 (Thistle)',
+        motto: '「復仇、嚴格、獨立」',
+        captains: '涅繭利 (Mayuri) / 浦原喜助 (初代)',
+        seat: '技術開發局副局長兼未知樣本分析主任',
+        gradient: 'from-yellow-500 via-purple-800 to-neutral-950',
+        badgeColor: 'border-yellow-500/40 text-yellow-300 bg-yellow-950/60',
+        desc: '你好奇心旺盛、思考跳躍，絕不盲從世俗常理。對你而言，未知才是最大的誘惑。你善於發明、改造與數據剖析，往往能用所有人意想不到的科學手段一舉翻轉戰局！'
+      },
+      squad13: {
+        id: 'squad13',
+        title: '十三番隊 (Thirteenth Division)',
+        tag: '【現世守護・同伴溫情堡壘】',
+        flower: '待雪草 (Snowdrop)',
+        motto: '「希望」',
+        captains: '浮竹十四郎 ➔ 朽木露琪亞',
+        seat: '現世駐紮第一席 / 人間靈魂淨化官',
+        gradient: 'from-teal-500 via-blue-700 to-indigo-950',
+        badgeColor: 'border-teal-500/40 text-teal-300 bg-teal-950/60',
+        desc: '你善良正直、深具同理心，把夥伴的平安放在第一位。你常駐在現世與屍魂界的交匯處，宛如冬日暖陽與待雪之花，在漫漫寒冬中守候著破曉的希望與光明！'
+      }
+    };
+
+    function switchQuizMode(mode) {
+      activeQuizMode = mode;
+      const tabZan = document.getElementById('tabBtnZanpakuto');
+      const tabSquad = document.getElementById('tabBtnSquad');
+      const badgeText = document.getElementById('quizBadgeText');
+      const mainTitle = document.getElementById('quizMainTitle');
+      const mainDesc = document.getElementById('quizMainDesc');
+
+      if (mode === 'zanpakuto') {
+        tabZan.className = "px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-purple-600 text-white shadow-lg shadow-purple-900/40 border border-purple-500/50 flex items-center space-x-2 transition-all";
+        tabSquad.className = "px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 text-gray-300 hover:text-white hover:bg-white/10 border border-white/10 flex items-center space-x-2 transition-all";
+        badgeText.textContent = "真央靈術院・淺打靈魂共鳴儀式";
+        mainTitle.textContent = "尋找你的命定斬魄刀";
+        mainDesc.textContent = "斬魄刀乃死神以自身靈魂注入「淺打」鍛造而成之半身。回答 8 道深層心理與處世情境抉擇，測定最契合你靈壓特質的本命斬魄刀與始解解放語！";
+      } else {
+        tabSquad.className = "px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-amber-600 text-white shadow-lg shadow-amber-900/40 border border-amber-500/50 flex items-center space-x-2 transition-all";
+        tabZan.className = "px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 text-gray-300 hover:text-white hover:bg-white/10 border border-white/10 flex items-center space-x-2 transition-all";
+        badgeText.textContent = "瀞靈廷人事局・護廷十三隊入隊配對儀式";
+        mainTitle.textContent = "測定最適合你的護廷番隊";
+        mainDesc.textContent = "護廷十三隊各番隊皆具備獨一無二的隊風、職責與隊花信條。回答 5 道軍團性向與處世風格題，鑑定最契合你靈魂特質的命定番隊！";
+      }
+
+      restartQuiz();
+      lucide.createIcons();
+    }
+
+    function renderQuiz() {
+      const isZan = activeQuizMode === 'zanpakuto';
+      const questionsList = isZan ? quizQuestions : squadQuestions;
+      const q = questionsList[quizCurrentIdx];
+
+      document.getElementById('quizStepText').textContent = `問題 ${quizCurrentIdx + 1} / ${questionsList.length}`;
+      document.getElementById('quizCategoryTag').textContent = q.category;
+      document.getElementById('quizProgressBar').style.width = `${((quizCurrentIdx + 1) / questionsList.length) * 100}%`;
+      document.getElementById('quizQuestionTitle').textContent = q.question;
+
+      const list = document.getElementById('quizOptionsList');
+      list.innerHTML = q.options.map(opt => `
+        <button 
+          onclick="handleQuizOption('${opt.key}')" 
+          class="w-full text-left p-4 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 hover:border-purple-500/40 transition-all flex items-start space-x-3 group"
+        >
+          <span class="w-6 h-6 rounded-lg bg-white/10 group-hover:bg-purple-600 group-hover:text-white flex items-center justify-center text-xs font-mono font-bold text-gray-300 shrink-0 transition-all">
+            ${opt.letter}
+          </span>
+          <span class="text-xs sm:text-sm text-gray-300 group-hover:text-white leading-relaxed">
+            ${escapeHtml(opt.text)}
+          </span>
+        </button>
+      `).join('');
+    }
+
+    function handleQuizOption(key) {
+      if (activeQuizMode === 'zanpakuto') {
+        quizScores[key] = (quizScores[key] || 0) + 1;
+        if (quizCurrentIdx < quizQuestions.length - 1) {
+          quizCurrentIdx++;
+          renderQuiz();
+        } else {
+          finishQuiz();
+        }
+      } else {
+        squadScores[key] = (squadScores[key] || 0) + 1;
+        if (quizCurrentIdx < squadQuestions.length - 1) {
+          quizCurrentIdx++;
+          renderQuiz();
+        } else {
+          finishSquadQuiz();
+        }
+      }
+    }
+
+    function finishQuiz() {
+      let maxKey = 'zangetsu';
+      let maxScore = -1;
+      for (const [k, score] of Object.entries(quizScores)) {
+        if (score > maxScore) {
+          maxScore = score;
+          maxKey = k;
+        }
+      }
+
+      currentQuizResultData = quizResults[maxKey];
+      const container = document.getElementById('quizContainer');
+      const resultBox = document.getElementById('quizResultContainer');
+      
+      container.classList.add('hidden');
+      resultBox.classList.remove('hidden');
+
+      resultBox.innerHTML = `
+        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/15 relative overflow-hidden shadow-2xl">
+          <div class="flex items-center justify-between pb-4 border-b border-white/10">
+            <span class="text-xs px-3 py-1 rounded-full border ${currentQuizResultData.badgeColor} font-mono font-bold">
+              ${escapeHtml(currentQuizResultData.sub)}
+            </span>
+            <span class="text-xs text-amber-400 font-mono font-bold flex items-center space-x-1">
+              <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>靈魂同調率：${currentQuizResultData.matchPercent}</span>
+            </span>
+          </div>
+
+          <div class="mt-6 text-center">
+            <div class="text-xs text-gray-400 font-mono uppercase tracking-widest">Resonant Zanpakuto</div>
+            <h3 class="text-3xl sm:text-4xl font-black text-white font-serif-tc mt-1">
+              ${escapeHtml(currentQuizResultData.title)}
+            </h3>
+            <p class="text-xs text-indigo-300 mt-1">持有者同源靈壓：${escapeHtml(currentQuizResultData.user)}（${escapeHtml(currentQuizResultData.attribute)}）</p>
+          </div>
+
+          <!-- Shikai Release Box -->
+          <div class="mt-8 p-5 rounded-2xl bg-gradient-to-r ${currentQuizResultData.themeGradient} p-[1px] shadow-xl">
+            <div class="bg-[#090d16] p-5 rounded-2xl text-center">
+              <div class="text-[11px] font-mono text-purple-300 uppercase tracking-widest font-semibold">你的本命始解解放語</div>
+              <div class="text-lg sm:text-xl font-serif-tc font-black text-white mt-2 tracking-wide">
+                ${escapeHtml(currentQuizResultData.shikaiCmd)}
+              </div>
+              <div class="text-xs text-gray-400 mt-2 font-mono">卍解：<span class="text-gray-200 font-semibold">${escapeHtml(currentQuizResultData.bankaiName)}</span></div>
+            </div>
+          </div>
+
+          <!-- Persona Analysis -->
+          <div class="mt-6 p-4 rounded-xl bg-white/5 border border-white/5">
+            <div class="text-xs font-mono font-bold text-gray-300 mb-1 flex items-center space-x-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-purple-400"></i>
+              <span>靈魂特質與性格鑑定：</span>
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-sans">
+              ${escapeHtml(currentQuizResultData.persona)}
+            </p>
+          </div>
+
+          <!-- Actions -->
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3 pt-4 border-t border-white/5">
+            <button onclick="restartQuiz()" class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 text-white transition-all flex items-center space-x-1.5">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+              <span>重新測定</span>
+            </button>
+            <button onclick="copyQuizResult()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-purple-600 hover:bg-purple-500 text-white transition-all flex items-center space-x-1.5 shadow-lg shadow-purple-900/40">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>複製鑑定結果</span>
+            </button>
+            <button onclick="switchQuizMode('squad')" class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-amber-600/30 hover:bg-amber-600/50 text-amber-200 border border-amber-500/30 transition-all flex items-center space-x-1.5">
+              <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+              <span>接著測：適合我的番隊 ➔</span>
+            </button>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function finishSquadQuiz() {
+      let maxKey = 'squad11';
+      let maxScore = -1;
+      for (const [k, score] of Object.entries(squadScores)) {
+        if (score > maxScore) {
+          maxScore = score;
+          maxKey = k;
+        }
+      }
+
+      currentQuizResultData = squadResults[maxKey];
+      const container = document.getElementById('quizContainer');
+      const resultBox = document.getElementById('quizResultContainer');
+      
+      container.classList.add('hidden');
+      resultBox.classList.remove('hidden');
+
+      resultBox.innerHTML = `
+        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/15 relative overflow-hidden shadow-2xl">
+          <div class="flex items-center justify-between pb-4 border-b border-white/10">
+            <span class="text-xs px-3 py-1 rounded-full border ${currentQuizResultData.badgeColor} font-mono font-bold">
+              ${escapeHtml(currentQuizResultData.tag)}
+            </span>
+            <span class="text-xs text-amber-400 font-mono font-bold flex items-center space-x-1">
+              <i data-lucide="shield" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>護廷配對契合度：99.5%</span>
+            </span>
+          </div>
+
+          <div class="mt-6 text-center">
+            <div class="text-xs text-gray-400 font-mono uppercase tracking-widest">Assigned Division</div>
+            <h3 class="text-3xl sm:text-4xl font-black text-white font-serif-tc mt-1">
+              ${escapeHtml(currentQuizResultData.title)}
+            </h3>
+            <p class="text-xs text-amber-300 mt-1">隊花：<span class="font-bold text-white">${escapeHtml(currentQuizResultData.flower)}</span>（花語：${escapeHtml(currentQuizResultData.motto)}）</p>
+          </div>
+
+          <!-- Squad Assignment Banner -->
+          <div class="mt-8 p-5 rounded-2xl bg-gradient-to-r ${currentQuizResultData.gradient} p-[1px] shadow-xl">
+            <div class="bg-[#090d16] p-5 rounded-2xl text-center">
+              <div class="text-[11px] font-mono text-amber-300 uppercase tracking-widest font-semibold">推薦任職席位</div>
+              <div class="text-lg sm:text-xl font-serif-tc font-black text-white mt-1 tracking-wide">
+                ${escapeHtml(currentQuizResultData.seat)}
+              </div>
+              <div class="text-xs text-gray-400 mt-2 font-mono">歷任代表隊長：<span class="text-gray-200 font-semibold">${escapeHtml(currentQuizResultData.captains)}</span></div>
+            </div>
+          </div>
+
+          <!-- Persona Analysis -->
+          <div class="mt-6 p-4 rounded-xl bg-white/5 border border-white/5">
+            <div class="text-xs font-mono font-bold text-gray-300 mb-1 flex items-center space-x-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>番隊契合性深度評語：</span>
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-sans">
+              ${escapeHtml(currentQuizResultData.desc)}
+            </p>
+          </div>
+
+          <!-- Actions -->
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3 pt-4 border-t border-white/5">
+            <button onclick="restartQuiz()" class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 text-white transition-all flex items-center space-x-1.5">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+              <span>重新鑑定</span>
+            </button>
+            <button onclick="copySquadResult()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-amber-600 hover:bg-amber-500 text-white transition-all flex items-center space-x-1.5 shadow-lg shadow-amber-900/40">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>複製入隊結果</span>
+            </button>
+            <button onclick="switchQuizMode('zanpakuto')" class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 border border-purple-500/30 transition-all flex items-center space-x-1.5">
+              <i data-lucide="sword" class="w-3.5 h-3.5"></i>
+              <span>切換測驗：命定斬魄刀 ➔</span>
+            </button>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function restartQuiz() {
+      quizCurrentIdx = 0;
+      quizScores = { zangetsu: 0, senbon: 0, kyoka: 0, ryujin: 0, sode: 0, katen: 0 };
+      squadScores = { squad1: 0, squad2: 0, squad4: 0, squad6: 0, squad8: 0, squad10: 0, squad11: 0, squad12: 0, squad13: 0 };
+      document.getElementById('quizResultContainer').classList.add('hidden');
+      document.getElementById('quizContainer').classList.remove('hidden');
+      renderQuiz();
+    }
+
+    function copyQuizResult() {
+      if (!currentQuizResultData) return;
+      const text = `【大靈書回廊・命定斬魄刀測驗】\n我的靈魂共鳴斬魄刀是：${currentQuizResultData.title}\n同調率：${currentQuizResultData.matchPercent}\n始解解放語：${currentQuizResultData.shikaiCmd}\n卍解：${currentQuizResultData.bankaiName}\n靈魂解析：${currentQuizResultData.persona}`;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('✓ 已複製測驗結果到剪貼簿');
+      });
+    }
+
+    function copySquadResult() {
+      if (!currentQuizResultData) return;
+      const text = `【護廷十三隊・入隊鑑定結果】\n最適合我的番隊是：${currentQuizResultData.title}\n隊花花語：${currentQuizResultData.motto}\n推薦席位：${currentQuizResultData.seat}\n隊長：${currentQuizResultData.captains}\n特質評語：${currentQuizResultData.desc}`;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('✓ 已複製入隊結果到剪貼簿');
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 8. CANVAS PARTICLES
+    // -------------------------------------------------------------
+    const canvas = document.getElementById('reiatsuCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 20;
+        this.size = Math.random() * 2.5 + 1;
+        this.speedY = Math.random() * 1.2 + 0.4;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random() * 0.5 + 0.15;
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        this.opacity -= 0.002;
+        if (this.opacity <= 0 || this.y < -10) this.reset();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(139, 92, 246, ${this.opacity})`;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 45; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Initial render
+    renderQuiz();
+    renderZanpakuto(zanpakutoData);
+    renderKido(kidoData);
+    renderCharacters(charactersData);
+  </script>
+</body>
+</html>
